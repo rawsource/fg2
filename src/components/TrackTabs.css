@@ -1,0 +1,48 @@
+.TrackTabs {
+  display: flex;
+  position: relative;
+}
+  .TrackTabs .item {
+    color: var(--button-fg-color);
+    align-items: center;
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 0;
+    padding: 10px 0px;
+    padding-left: 10px;
+    font-size: 12px;
+    border-right: 2px solid var(--main-bg-color);
+    position: relative;
+    white-space: nowrap;
+  }
+    .TrackTabs .item:last-child {
+      border-right: none;
+    }
+    .TrackTabs .item.active {
+      background: var(--active-tab-color);
+      z-index: 1;
+      border-top-right-radius: 5px;
+    }
+    .TrackTabs .item .bus {
+      position: absolute;
+      display: flex;
+      right: 5px;
+      width: 60px;
+    }
+      .TrackTabs .item .bus .button {
+        flex-grow: 1;
+        flex-basis: 0;
+        margin-right: 5px;
+        padding: 5px;
+        background: #222;
+        color: white;
+        display: inline-block;
+        text-align: center;
+        border-radius: 3px;
+      }
+        .TrackTabs .item .bus .button:last-child {
+          margin-right: 0;
+        }
+        .TrackTabs .item.active .bus .button {
+          background: #333;
+        }
