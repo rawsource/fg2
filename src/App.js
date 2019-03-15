@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TransportControls from './components/TransportControls'
 import TrackTabs from './components/TrackTabs'
+import './App.css';
 
 class App extends Component {
   render() {
