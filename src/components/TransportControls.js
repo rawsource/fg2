@@ -1,7 +1,20 @@
 import React, { Component } from 'react';
 import './TransportControls.css';
 
-class TransportControls extends Component {
+const TimeElement = React.memo((props) => {
+  return (
+    <div className="time">
+      <div className="inner">
+        120.00 <span>BPM</span>
+      </div>
+      <div className="inner">
+        3:1:4 <span>BARS</span>
+      </div>
+    </div>
+  );
+});
+
+class TransportControls extends React.PureComponent {
   render() {
     return (
       <div className="TransportControls">
@@ -22,14 +35,7 @@ class TransportControls extends Component {
           <div className="button transport-play">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"/></svg>
           </div>
-          <div className="time">
-            <div className="inner">
-              120.00 <span>BPM</span>
-            </div>
-            <div className="inner">
-              3:1:4 <span>BARS</span>
-            </div>
-          </div>
+          <TimeElement />
         </div>
       </div>
     );
