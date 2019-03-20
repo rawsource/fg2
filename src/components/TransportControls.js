@@ -14,7 +14,7 @@ const TimeElement = React.memo((props) => {
   );
 });
 
-class TransportControls extends React.PureComponent {
+class TransportControls extends Component {
   render() {
     return (
       <div className="TransportControls">

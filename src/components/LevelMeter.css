@@ -1,0 +1,22 @@
+.level-meter {
+  display: flex;
+  background: var(--main-bg-color);
+  border-left: 2px solid var(--black-color);
+}
+  .level-meter .meter {
+    width: 5px;
+    background: linear-gradient(to bottom, rgba(250,0,46,1) 0%, rgba(255,146,10,1) 25%, rgba(255,235,10,1) 58%, rgba(10,255,18,1) 100%);
+    display: flex;
+    flex-direction: column;
+  }
+    .level-meter .meter .segment {
+      border-bottom: 2px solid var(--black-color);
+      flex-grow: 1;
+    }
+    .level-meter .meter .segment:last-child {
+      border-bottom: none;
+    }
+    .level-meter .meter .segment:nth-child(-n+12) {
+      /*background: var(--main-bg-color);*/
+      background: var(--black-color);
+    }

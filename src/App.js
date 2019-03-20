@@ -1,6 +1,9 @@
+// @flow
 import React, { Component } from 'react';
 import TransportControls from './components/TransportControls'
 import TrackTabs from './components/TrackTabs'
+import PatternOptions from './components/PatternOptions'
+import LevelMeter from './components/LevelMeter'
 import AppContext from './AppContext'
 import './App.css';
 
@@ -26,14 +29,22 @@ class AppStore extends Component {
   }
 }
 
-
 class App extends Component {
   render() {
     return (
       <div className="App">
         <AppStore>
           <TransportControls />
-          <TrackTabs />
+          <AppContext.Consumer>
+            {state => (
+              <TrackTabs tracks={state.tracks} addTrack={state.addTrack} />
+            )}
+          </AppContext.Consumer>
+          <div className="track">
+              <PatternOptions />
+              <LevelMeter />
+              {/* <PatternEditor /> */}
+          </div>
         </AppStore>
       </div>
     );

@@ -1,0 +1,101 @@
+.pattern-options {
+  background: var(--main-bg-color);
+  display: inline-block;
+  padding: 10px;
+  width: 100%;
+}
+
+.options {
+  display: flex;
+  background: var(--item-inactive-color);
+  color: var(--button-fg-color);
+  border-radius: 2px;
+}
+  .options .option {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      flex-grow: 1;
+      padding: 5px 0px;
+      font-size: 12px;
+  }
+      .options .option:hover {
+          background: var(--button-hover-bg-color);
+      }
+      .options .option:last-child {
+          margin-right: 0;
+      }
+      .options .option.active {
+          border-radius: 2px;
+          color: var(--main-bg-color);
+          background: var(--item-active-color);
+      }
+
+.sub-title {
+  color: var(--white-color);
+  font-size: 14px;
+  margin-left: 20px;
+  display: flex;
+}
+  .sub-title svg {
+      width: 15px;
+      height: 15px;
+      fill: var(--item-inactive-color);
+      margin-left: 10px;
+      margin-top: 2px;
+  }
+  .pattern-section svg.repeat.active {
+      fill: var(--white-color);
+  }
+.patterns {
+  display: flex;
+  padding: 30px 20px 5px 20px;
+}
+.pages {
+  display: flex;
+  padding: 15px 20px 5px 20px;
+}
+.pattern-options .item {
+  height: 20px;
+  flex-grow: 1;
+  background: var(--item-inactive-color);
+  margin-right: 10px;
+  border-radius: 2px;
+}
+.item:last-child {
+  margin-right: 0;
+}
+  .item.active {
+      background: var(--item-active-color);
+  }
+  .item.open {
+      background: var(--item-semi-color);
+  }
+  .pages .item {
+      background: var(--disabled-page-color);
+  }
+  .pages .item.used {
+      background: var(--item-inactive-color);
+  }
+  .pages .item.active {
+      background: var(--item-active-color);
+  }
+  .item.playing {
+      display: flex;
+      align-items: center;
+      position: relative;
+  }
+  .item.playing:after {
+      position: absolute;
+      background: var(--item-active-color);
+      width: 4px;
+      height: 4px;
+      left: calc(50% - 2px);
+      content: '';
+  }
+  .item.active.playing:after {
+      background: var(--item-inactive-color);
+  }
+.hidden {
+  display: none;
+}

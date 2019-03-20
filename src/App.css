@@ -1,3 +1,20 @@
 .App {
   min-width: 1160px;
 }
+
+.track {
+  display: flex;
+  position: relative;
+}
+
+PatternOptions {
+  display: flex;
+  flex-grow: 1;
+  max-width: 25%;
+  min-width: 290px;
+}
+
+LevelMeter {
+  display: flex;
+}
+
