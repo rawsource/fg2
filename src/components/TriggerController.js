@@ -6,41 +6,43 @@ class TriggerController extends Component {
   state = {
     mouseDown: false,
     steps: [
-      { id: 0, trg: 0 },
-      { id: 1, trg: 0 },
-      { id: 2, trg: 0 },
-      { id: 3, trg: 0 },
-      { id: 4, trg: 0 },
-      { id: 5, trg: 0 },
-      { id: 6, trg: 0 },
-      { id: 7, trg: 0 },
-      { id: 8, trg: 0 },
-      { id: 9, trg: 0 },
-      { id: 10, trg: 0 },
-      { id: 11, trg: 0 },
-      { id: 12, trg: 0 },
-      { id: 13, trg: 0 },
-      { id: 14, trg: 0 },
-      { id: 15, trg: 0 },
+      { num: 0, trg: false },
+      { num: 1, trg: false },
+      { num: 2, trg: false },
+      { num: 3, trg: false },
+      { num: 4, trg: false },
+      { num: 5, trg: false },
+      { num: 6, trg: false },
+      { num: 7, trg: false },
+      { num: 8, trg: false },
+      { num: 9, trg: false },
+      { num: 10, trg: false },
+      { num: 11, trg: false },
+      { num: 12, trg: false },
+      { num: 13, trg: false },
+      { num: 14, trg: false },
+      { num: 15, trg: false }
     ]
   };
 
   setStepState(step) {
+    // probably because i use triggerStepMouseHandler for two different events
+    // that step can be undefined
+    if (step === undefined) return;
+
     const steps = this.state.steps.slice();
-    steps[step].trg = (steps[step].trg === 1) ? 0 : 1;
+    steps[step].trg = !steps[step].trg;
     this.setState({ steps });
   }
 
   triggerStepMouseHandler = (event) => {
-    if (event.buttons !== 1) {
-      return false;
-    }
+    if (event.buttons !== 1) return;
     this.setStepState(event.target.dataset.step);
   }
 
   render() {
     const triggerSteps = this.state.steps.map((step) =>
-      <TriggerStep key={step.id}
+      <TriggerStep key={step.num}
                    step={step}
                    mouseHandler={this.triggerStepMouseHandler} />
     );
