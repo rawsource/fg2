@@ -5,7 +5,7 @@ import './ValueController.css';
 class ValueController extends Component {
   render() {
     return (
-      <div class="value-controller">
+      <div className="value-controller">
         <ValueStep />
         <ValueStep />
         <ValueStep />

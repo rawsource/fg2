@@ -6,8 +6,8 @@ class ValueStep extends Component {
     return (
       <div className="ValueStep">
       <div>
-        <div class="slider"></div>
-        <div class="digits">0</div>
+        <div className="slider"></div>
+        <div className="digits">0</div>
       </div>
       </div>
     );
