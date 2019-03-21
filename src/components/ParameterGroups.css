@@ -1,3 +1,7 @@
+.ParameterGroups {
+    display: flex;
+  }    
+
 .parameter-groups {
   display: flex;
   flex-direction: column;
@@ -5,25 +9,25 @@
   background: var(--main-bg-color);
 }
   .parameter-groups .item {
-      color: var(--button-fg-color);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 12px;
-      text-transform: uppercase;
-      border-radius: 3px;
-      background: var(--item-inactive-color);
-      padding: 5px;
-      margin-bottom: 10px;
-      flex-grow: 1;
+    color: var(--button-fg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    background: var(--item-inactive-color);
+    padding: 5px;
+    margin-bottom: 10px;
+    flex-grow: 1;
   }
-      .parameter-groups .item:last-child {
-          margin-bottom: 0;
-      }
-      .parameter-groups .item:hover {
-          background: var(--button-hover-bg-color);
-      }
-      .parameter-groups .item.active {
-          background: var(--item-active-color);
-          color: var(--main-bg-color);
-      }
+    .parameter-groups .item:last-child {
+      margin-bottom: 0;
+    }
+    .parameter-groups .item:hover {
+      background: var(--button-hover-bg-color);
+    }
+    .parameter-groups .item.active {
+      background: var(--item-active-color);
+      color: var(--main-bg-color);
+    }

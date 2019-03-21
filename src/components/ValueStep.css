@@ -1,0 +1,28 @@
+.ValueStep {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+  .ValueStep:last-child {
+    margin-right: 0;
+  }
+
+.digits {
+  font-size: 12px;
+  color: white;
+  text-align: center;
+  width: 30px;
+  margin: 5px auto 0;
+}
+.slider {
+  position: relative;
+  height: 127px;
+  border: 2px solid var(--item-active-color);
+  border-radius: 3px;
+}
+@supports (background: paint(slanted-bg)) {
+  .slider {
+    --height: 0;
+    --background-color: var(--item-active-color);
+    background: paint(value-bg);
+  }
+}

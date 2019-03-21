@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ParameterGroups from './ParameterGroups'
 import TrackParameters from './TrackParameters'
+import ValueController from './ValueController'
 import './PatternEditor.css';
 
 class PatternEditor extends Component {
@@ -11,7 +12,7 @@ class PatternEditor extends Component {
       <ParameterGroups />
       <div className="sequencer">
         <TrackParameters />
-        <value-controller></value-controller>
+        <ValueController />
         <trigger-controller></trigger-controller>
         <div className="subdivisions">
           <div className="item"></div>

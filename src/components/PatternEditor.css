@@ -3,26 +3,23 @@
   flex-grow: 1;
 }
 
-.ParameterGroups {
-  display: flex;
-}    
-
 .sequencer {
   flex-grow: 1;
   background: var(--main-bg-color);
   padding: 10px;
   padding-left: 0;
 }
+
 .subdivisions {
   display: flex;
 }
   .subdivisions .item {
-      margin-top: 10px;
-      margin-right: 10px;
-      background: var(--item-inactive-color);
-      padding: 2px;
-      flex-grow: 1;
+    margin-top: 10px;
+    margin-right: 10px;
+    background: var(--item-inactive-color);
+    padding: 2px;
+    flex-grow: 1;
   }
   .subdivisions .item:last-child {
-      margin-right: 0;
+    margin-right: 0;
   }
