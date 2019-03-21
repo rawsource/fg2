@@ -25,24 +25,24 @@ class TriggerController extends Component {
     ]
   };
 
-  toggleSteps(step) {
+  setStepState(step) {
     const steps = this.state.steps.slice();
     steps[step].trg = (steps[step].trg === 1) ? 0 : 1;
     this.setState({ steps });
   }
 
-  onTriggerStepMouseHandler = (event) => {
+  triggerStepMouseHandler = (event) => {
     if (event.buttons !== 1) {
       return false;
     }
-    this.toggleSteps(event.target.dataset.step);
+    this.setStepState(event.target.dataset.step);
   }
 
   render() {
     const triggerSteps = this.state.steps.map((step) =>
       <TriggerStep key={step.id}
                    step={step}
-                   mouseHandler={this.onTriggerStepMouseHandler} />
+                   mouseHandler={this.triggerStepMouseHandler} />
     );
     return (
       <div className="trigger-controller">
