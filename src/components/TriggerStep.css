@@ -1,0 +1,22 @@
+.TriggerStep {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+  .TriggerStep:last-child {
+    margin-right: 0;
+  }
+
+.trigger {
+  height: 20px;
+  border: 2px solid var(--item-active-color);
+  border-radius: 3px;
+  transition: all .2s ease-in-out;
+  transition-property: transform, background-color;
+}
+.trigger.active {
+  background-color: var(--item-active-color);
+}
+:host(.highlight) .trigger {
+  border-color: white;
+  box-shadow: 0 5px white;
+}
