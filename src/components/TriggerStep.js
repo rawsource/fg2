@@ -4,18 +4,17 @@ import './TriggerStep.css';
 class TriggerStep extends Component {
   render() {
     let className = 'trigger';
-    if (this.props.stepTrg === 1) {
-      className += ' active'
+    if (this.props.step.trg === 1) {
+      className = `${className} active`;
     }
     return (
       <div className="TriggerStep"
-           onMouseDown={this.props.onMouseDown}
-           onMouseOver={this.props.onMouseOver}>
-        <div className={className} data-step={this.props.stepNum}></div>
+           onMouseDown={this.props.mouseHandler}
+           onMouseOver={this.props.mouseHandler}>
+        <div className={className} data-step={this.props.step.id}></div>
       </div>
     );
   }
 }
 
 export default TriggerStep;
-
