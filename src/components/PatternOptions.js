@@ -5,6 +5,7 @@ class PatternOptions extends Component {
   render() {
 
     return (
+      <div className="PatternOptions">
       <div className="pattern-options">
         <div className="options">
           <div className="option option-pattern active">PATTERN</div>
@@ -36,6 +37,7 @@ class PatternOptions extends Component {
         <div className="sample-section hidden">
           <button className="record">record</button>
         </div>
+      </div>
       </div>
     );
   }

@@ -1,9 +1,9 @@
-// @flow
 import React, { Component } from 'react';
 import TransportControls from './components/TransportControls'
 import TrackTabs from './components/TrackTabs'
 import PatternOptions from './components/PatternOptions'
 import LevelMeter from './components/LevelMeter'
+import PatternEditor from './components/PatternEditor'
 import AppContext from './AppContext'
 import './App.css';
 
@@ -43,7 +43,7 @@ class App extends Component {
           <div className="track">
               <PatternOptions />
               <LevelMeter />
-              {/* <PatternEditor /> */}
+              <PatternEditor />
           </div>
         </AppStore>
       </div>

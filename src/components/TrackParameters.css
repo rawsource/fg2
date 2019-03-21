@@ -1,0 +1,32 @@
+.track-parameters {
+    display: flex;
+    margin-bottom: 10px;
+}
+.track-parameters .item:last-child,
+.track-parameters .item.last-visible-item {
+    margin-right: 0;
+}
+.track-parameters .item {
+    flex-grow: 1;
+    background: var(--item-inactive-color);
+    color: var(--main-bg-color);
+    margin-right: 10px;
+    border-radius: 2px;
+    padding: 5px 10px;
+    font-size: 12px;
+    text-transform: uppercase;
+    flex-basis: 0;
+    display: none;
+}
+.track-parameters .item.active {
+    background: var(--item-active-color);
+}
+.track-parameters .item.visible {
+    display: block;
+}
+@supports (background: paint(slanted-bg)) {
+    .track-parameters .item.active {
+        --background-color: var(--item-active-color);
+        background: paint(slanted-bg);
+    }
+}
