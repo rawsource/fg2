@@ -16,6 +16,24 @@ class AppStore extends Component {
   };
 
   state = {
+    steps: [
+      { num: 0, trg: false },
+      { num: 1, trg: false },
+      { num: 2, trg: false },
+      { num: 3, trg: false },
+      { num: 4, trg: false },
+      { num: 5, trg: false },
+      { num: 6, trg: false },
+      { num: 7, trg: false },
+      { num: 8, trg: false },
+      { num: 9, trg: false },
+      { num: 10, trg: false },
+      { num: 11, trg: false },
+      { num: 12, trg: false },
+      { num: 13, trg: false },
+      { num: 14, trg: false },
+      { num: 15, trg: false }
+    ],
     tracks: [1],
     addTrack: this.addTrack
   };

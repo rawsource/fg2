@@ -3,6 +3,7 @@ import ParameterGroups from './ParameterGroups'
 import TrackParameters from './TrackParameters'
 import ValueController from './ValueController'
 import TriggerController from './TriggerController'
+import AppContext from '../AppContext'
 import './PatternEditor.css';
 
 class PatternEditor extends Component {
@@ -14,7 +15,11 @@ class PatternEditor extends Component {
       <div className="sequencer">
         <TrackParameters />
         <ValueController />
-        <TriggerController />
+        <AppContext.Consumer>
+          {state => (
+            <TriggerController steps={state.steps} />
+          )}
+        </AppContext.Consumer>
         <div className="subdivisions">
           <div className="item"></div>
           <div className="item"></div>
