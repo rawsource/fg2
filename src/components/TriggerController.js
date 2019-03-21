@@ -4,7 +4,6 @@ import './TriggerController.css';
 
 class TriggerController extends Component {
   state = {
-    mouseDown: false,
     steps: [
       { num: 0, trg: false },
       { num: 1, trg: false },
@@ -42,9 +41,10 @@ class TriggerController extends Component {
 
   render() {
     const triggerSteps = this.state.steps.map((step) =>
-      <TriggerStep key={step.num}
-                   step={step}
-                   mouseHandler={this.triggerStepMouseHandler} />
+      <TriggerStep
+        key={step.num}
+        step={step}
+        mouseHandler={this.triggerStepMouseHandler} />
     );
     return (
       <div className="trigger-controller">
