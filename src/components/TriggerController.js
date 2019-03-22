@@ -3,9 +3,16 @@ import TriggerStep from './TriggerStep'
 import './TriggerController.css';
 
 class TriggerController extends Component {
-  triggerStepMouseHandler = (event) => {
+  initialTrg = false;
+
+  triggerStepMouseDownHandler = (event) => {
     if (event.buttons !== 1) return;
-    this.props.setStep(event.target.dataset.step);
+    this.initialTrg = this.props.setStep(event.target.dataset.step, undefined);
+  }
+
+  triggerStepMouseOverHandler = (event) => {
+    if (event.buttons !== 1) return;
+    this.props.setStep(event.target.dataset.step, this.initialTrg);
   }
 
   render() {
@@ -13,7 +20,8 @@ class TriggerController extends Component {
       <TriggerStep
         key={step.num}
         step={step}
-        mouseHandler={this.triggerStepMouseHandler} />
+        mouseDownHandler={this.triggerStepMouseDownHandler}
+        mouseOverHandler={this.triggerStepMouseOverHandler} />
     );
     return (
       <div className="trigger-controller">

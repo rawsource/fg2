@@ -10,8 +10,8 @@ class TriggerStep extends Component {
     return (
       <div
         className="TriggerStep"
-        onMouseDown={this.props.mouseHandler}
-        onMouseOver={this.props.mouseHandler}>
+        onMouseDown={this.props.mouseDownHandler}
+        onMouseOver={this.props.mouseOverHandler}>
         <div className={className} data-step={this.props.step.num}></div>
       </div>
     );

@@ -15,19 +15,21 @@ class AppStore extends Component {
     }));
   };
 
-  setStep = (step) => {
+  setStep = (step, trg) => {
     // probably because i use triggerStepMouseHandler for two different events
     // that step can be undefined
     if (step === undefined) return;
 
     const steps = this.state.steps.slice();
-    steps[step].trg = !steps[step].trg;
+    const stepTrg = (trg === undefined) ? !steps[step].trg : trg
+    steps[step].trg = stepTrg
     this.setState({ steps });
+    return stepTrg;
   };
 
   state = {
     steps: [
-      { num: 0, trg: false },
+      {num: 0, trg: false },
       { num: 1, trg: false },
       { num: 2, trg: false },
       { num: 3, trg: false },
@@ -55,7 +57,7 @@ class AppStore extends Component {
         {this.props.children}
       </AppContext.Provider>
     )
-  }
+  };
 }
 
 class App extends Component {
