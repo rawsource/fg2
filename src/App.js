@@ -27,6 +27,12 @@ class AppStore extends Component {
     return stepTrg;
   };
 
+  setParameter = (step, val) => {
+    const parameters = this.state.parameters.slice();
+    parameters[step].val = val;
+    this.setState({ parameters });
+  };
+
   state = {
     steps: [
       { num: 0, trg: false },
@@ -46,9 +52,28 @@ class AppStore extends Component {
       { num: 14, trg: false },
       { num: 15, trg: false }
     ],
+    parameters: [
+      { num: 0, val: 10 },
+      { num: 1, val: 50 },
+      { num: 2, val: 100 },
+      { num: 3, val: 100 },
+      { num: 4, val: 100 },
+      { num: 5, val: 100 },
+      { num: 6, val: 100 },
+      { num: 7, val: 100 },
+      { num: 8, val: 100 },
+      { num: 9, val: 100 },
+      { num: 10, val: 100 },
+      { num: 11, val: 100 },
+      { num: 12, val: 100 },
+      { num: 13, val: 100 },
+      { num: 14, val: 100 },
+      { num: 15, val: 100 },
+    ],
     tracks: [1],
     addTrack: this.addTrack,
-    setStep: this.setStep
+    setStep: this.setStep,
+    setParameter: this.setParameter
   };
 
   render() {

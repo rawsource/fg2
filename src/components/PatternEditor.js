@@ -14,10 +14,18 @@ class PatternEditor extends Component {
       <ParameterGroups />
       <div className="sequencer">
         <TrackParameters />
-        <ValueController />
         <AppContext.Consumer>
           {state => (
-            <TriggerController steps={state.steps} setStep={state.setStep} />
+            <ValueController
+              parameters={state.parameters}
+              setParameter={state.setParameter} />
+          )}
+        </AppContext.Consumer>
+        <AppContext.Consumer>
+          {state => (
+            <TriggerController
+              steps={state.steps}
+              setStep={state.setStep} />
           )}
         </AppContext.Consumer>
         <div className="subdivisions">

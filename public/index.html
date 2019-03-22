@@ -8,6 +8,12 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <title>RWSS-30H</title>
+    <script>
+      if ('paintWorklet' in CSS) {
+        CSS.paintWorklet.addModule('%PUBLIC_URL%/worklets/value-bg-paint.js')
+        CSS.paintWorklet.addModule('%PUBLIC_URL%/worklets/slanted-bg-paint.js')
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
