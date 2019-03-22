@@ -21,15 +21,15 @@ class AppStore extends Component {
     if (step === undefined) return;
 
     const steps = this.state.steps.slice();
-    const stepTrg = (trg === undefined) ? !steps[step].trg : trg
-    steps[step].trg = stepTrg
+    const stepTrg = trg === undefined ? !steps[step].trg : trg;
+    steps[step].trg = stepTrg;
     this.setState({ steps });
     return stepTrg;
   };
 
   state = {
     steps: [
-      {num: 0, trg: false },
+      { num: 0, trg: false },
       { num: 1, trg: false },
       { num: 2, trg: false },
       { num: 3, trg: false },
@@ -56,8 +56,8 @@ class AppStore extends Component {
       <AppContext.Provider value={this.state}>
         {this.props.children}
       </AppContext.Provider>
-    )
-  };
+    );
+  }
 }
 
 class App extends Component {
