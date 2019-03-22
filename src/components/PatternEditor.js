@@ -17,7 +17,7 @@ class PatternEditor extends Component {
         <ValueController />
         <AppContext.Consumer>
           {state => (
-            <TriggerController steps={state.steps} />
+            <TriggerController steps={state.steps} setStep={state.setStep} />
           )}
         </AppContext.Consumer>
         <div className="subdivisions">

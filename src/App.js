@@ -15,6 +15,16 @@ class AppStore extends Component {
     }));
   };
 
+  setStep = (step) => {
+    // probably because i use triggerStepMouseHandler for two different events
+    // that step can be undefined
+    if (step === undefined) return;
+
+    const steps = this.state.steps.slice();
+    steps[step].trg = !steps[step].trg;
+    this.setState({ steps });
+  };
+
   state = {
     steps: [
       { num: 0, trg: false },
@@ -35,7 +45,8 @@ class AppStore extends Component {
       { num: 15, trg: false }
     ],
     tracks: [1],
-    addTrack: this.addTrack
+    addTrack: this.addTrack,
+    setStep: this.setStep
   };
 
   render() {
