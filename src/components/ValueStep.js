@@ -7,23 +7,31 @@ class ValueStep extends Component {
     this.sliderRef = React.createRef();
   }
 
-  updateStyleMap() {
+  setAttributeStyleMap() {
     const sliderNode = this.sliderRef.current;
     sliderNode.attributeStyleMap.set('--height', this.props.step.val);
   }
 
   componentDidMount() {
-    this.updateStyleMap();
+    this.setAttributeStyleMap();
   }
+
   componentDidUpdate() {
-    this.updateStyleMap();
+    this.setAttributeStyleMap();
   }
 
   render() {
     return (
       <div className="ValueStep">
       <div>
-        <div className="slider" ref={this.sliderRef}></div>
+        <div
+          className="slider"
+          ref={this.sliderRef}
+          onMouseDown={this.props.mouseDownHandler}
+          onMouseOut={this.props.mouseOutHandler}
+          onMouseMove={this.props.mouseMoveHandler}
+          data-step={this.props.step.num}>
+        </div>
         <div className="digits">{this.props.step.val}</div>
       </div>
       </div>
