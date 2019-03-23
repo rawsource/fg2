@@ -28,8 +28,9 @@ class ValueStep extends Component {
           className="slider"
           ref={this.sliderRef}
           onMouseDown={this.props.mouseDownHandler}
-          onMouseOut={this.props.mouseOutHandler}
           onMouseMove={this.props.mouseMoveHandler}
+          onMouseOut={this.props.mouseOutHandler}
+          onWheel={this.props.wheelHandler}
           data-step={this.props.step.num}>
         </div>
         <div className="digits">{this.props.step.val}</div>

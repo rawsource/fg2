@@ -12,7 +12,10 @@ class TriggerStep extends Component {
         className="TriggerStep"
         onMouseDown={this.props.mouseDownHandler}
         onMouseOver={this.props.mouseOverHandler}>
-        <div className={className} data-step={this.props.step.num}></div>
+        <div
+          className={className}
+          data-step={this.props.step.num}>
+        </div>
       </div>
     );
   }

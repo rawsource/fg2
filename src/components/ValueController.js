@@ -12,6 +12,11 @@ class ValueController extends Component {
     this.update(event.target.dataset.step, event.nativeEvent.offsetY);
   }
 
+  mouseMoveHandler = (event) => {
+    if (event.buttons !== 1) return;
+    this.update(event.target.dataset.step, event.nativeEvent.offsetY);
+  }
+
   mouseOutHandler = (event) => {
     if (event.buttons !== 1) return;
     if (event.nativeEvent.offsetY > this.maxY) {
@@ -22,9 +27,11 @@ class ValueController extends Component {
     }
   }
 
-  mouseMoveHandler = (event) => {
-    if (event.buttons !== 1) return;
-    this.update(event.target.dataset.step, event.nativeEvent.offsetY);
+  wheelHandler = (event) => {
+    const step = event.target.dataset.step;
+    const val = this.props.parameters[step].val;
+    const offset = (event.deltaY < 0) ? 1 : -1;
+    this.update(step, this.maxY - (val + offset));
   }
 
   update (step, val) {
@@ -38,8 +45,9 @@ class ValueController extends Component {
         key={step.num}
         step={step}
         mouseDownHandler={this.mouseDownHandler}
+        mouseMoveHandler={this.mouseMoveHandler}
         mouseOutHandler={this.mouseOutHandler}
-        mouseMoveHandler={this.mouseMoveHandler} />
+        wheelHandler={this.wheelHandler} />
     );
     return (
       <div className="value-controller">
