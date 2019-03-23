@@ -49,8 +49,6 @@ class AppStore extends Component {
       { id: 'smp', name: 'Sampler', active: true },
       { id: 'flt', name: 'Biquad Filter' },
       { id: 'sha', name: 'Wave Shaper' },
-      { id: 'rev', name: 'Reverb' },
-      { id: 'ech', name: 'Echo' },
       { id: 'cmp', name: 'Dynamics Compressor' }
     ],
     parameter: 'vel',
@@ -68,6 +66,20 @@ class AppStore extends Component {
         { id: 'qua', name: 'Quality Factor' },
         { id: 'det', name: 'Detune' },
         { id: 'gai', name: 'Gain' }
+      ],
+      sha: [
+        { id: 'act', name: 'Active', active: true },
+        { id: 'cur', name: 'Curve' },
+        { id: 'ovs', name: 'Oversample' }
+      ],
+      cmp: [
+        { id: 'act', name: 'Active', active: true },
+        { id: 'trs', name: 'Treshold' },
+        { id: 'kne', name: 'Knee' },
+        { id: 'rat', name: 'Ratio' },
+        { id: 'red', name: 'Reduction' },
+        { id: 'att', name: 'Attack' },
+        { id: 'rel', name: 'Release' }
       ]
     },
     steps: [
