@@ -9,12 +9,6 @@ import './App.css';
 
 
 class AppStore extends Component {
-  addTrack = () => {
-    this.setState(state => ({
-      tracks: [...state.tracks, state.tracks.length + 1]
-    }));
-  };
-
   setStep = (step, trg) => {
     const steps = this.state.steps.slice();
     const stepTrg = trg === undefined ? !steps[step].trg : trg;
@@ -112,8 +106,8 @@ class AppStore extends Component {
       { num: 14, val: 100 },
       { num: 15, val: 100 },
     ],
-    tracks: [1],
-    addTrack: this.addTrack,
+    track: 1,
+    tracks: [1, 2, 3, 4, 5, 6, 7, 8],
     setStep: this.setStep,
     setGroup: this.setGroup,
     setValue: this.setValue,
@@ -137,13 +131,13 @@ class App extends Component {
           <TransportControls />
           <AppContext.Consumer>
             {state => (
-              <TrackTabs tracks={state.tracks} addTrack={state.addTrack} />
+              <TrackTabs tracks={state.tracks} />
             )}
           </AppContext.Consumer>
           <div className="track">
-              <PatternOptions />
-              <LevelMeter />
-              <PatternEditor />
+            <PatternOptions />
+            <LevelMeter />
+            <PatternEditor />
           </div>
         </AppStore>
       </div>
