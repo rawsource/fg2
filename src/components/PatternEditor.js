@@ -23,8 +23,8 @@ class PatternEditor extends Component {
         <AppContext.Consumer>
           {state => (
             <ValueController
-              parameters={state.parameters}
-              setParameter={state.setParameter} />
+              values={state.values}
+              setValue={state.setValue} />
           )}
         </AppContext.Consumer>
         <AppContext.Consumer>

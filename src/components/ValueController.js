@@ -29,18 +29,18 @@ class ValueController extends Component {
 
   wheelHandler = (event) => {
     const step = event.target.dataset.step;
-    const val = this.props.parameters[step].val;
+    const val = this.props.values[step].val;
     const offset = (event.deltaY < 0) ? 1 : -1;
     this.update(step, this.maxY - (val + offset));
   }
 
   update (step, val) {
     val = Math.min(Math.max(val, this.minY), this.maxY);
-    this.props.setParameter(step, this.maxY - val);
+    this.props.setValue(step, this.maxY - val);
   }
 
   render() {
-    const valueSteps = this.props.parameters.map((step) =>
+    const valueSteps = this.props.values.map((step) =>
       <ValueStep
         key={step.num}
         step={step}

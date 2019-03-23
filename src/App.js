@@ -23,10 +23,10 @@ class AppStore extends Component {
     return stepTrg;
   };
 
-  setParameter = (step, val) => {
-    const parameters = this.state.parameters.slice();
-    parameters[step].val = val;
-    this.setState({ parameters });
+  setValue = (step, val) => {
+    const values = this.state.values.slice();
+    values[step].val = val;
+    this.setState({ values });
   };
 
   setGroup = (group_id) => {
@@ -49,22 +49,22 @@ class AppStore extends Component {
       { id: 'ech', name: 'Echo' },
       { id: 'cmp', name: 'Dynamics Compressor' }
     ],
-    // parameters: {
-    //   smp: [
-    //     { id: 'vel', name: 'Velocity', active: true },
-    //     { id: 'pit', name: 'Pitch' },
-    //     { id: 'sta', name: 'Sample Start' },
-    //     { id: 'end', name: 'Sample End' },
-    //   ],
-    //   flt: [
-    //     { id: 'act', name: 'Active', active: true },
-    //     { id: 'typ', name: 'Type' },
-    //     { id: 'frq', name: 'Frequency' },
-    //     { id: 'qua', name: 'Quality Factor' },
-    //     { id: 'det', name: 'Detune' },
-    //     { id: 'gai', name: 'Gain' }
-    //   ]
-    // },
+    parameters: {
+      smp: [
+        { id: 'vel', name: 'Velocity', active: true },
+        { id: 'pit', name: 'Pitch' },
+        { id: 'sta', name: 'Sample Start' },
+        { id: 'end', name: 'Sample End' },
+      ],
+      flt: [
+        { id: 'act', name: 'Active', active: true },
+        { id: 'typ', name: 'Type' },
+        { id: 'frq', name: 'Frequency' },
+        { id: 'qua', name: 'Quality Factor' },
+        { id: 'det', name: 'Detune' },
+        { id: 'gai', name: 'Gain' }
+      ]
+    },
     steps: [
       { num: 0, trg: false },
       { num: 1, trg: false },
@@ -83,7 +83,7 @@ class AppStore extends Component {
       { num: 14, trg: false },
       { num: 15, trg: false }
     ],
-    parameters: [
+    values: [
       { num: 0, val: 10 },
       { num: 1, val: 50 },
       { num: 2, val: 100 },
@@ -105,7 +105,7 @@ class AppStore extends Component {
     addTrack: this.addTrack,
     setStep: this.setStep,
     setGroup: this.setGroup,
-    setParameter: this.setParameter
+    setValue: this.setValue
   };
 
   render() {
