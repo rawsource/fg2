@@ -16,10 +16,6 @@ class AppStore extends Component {
   };
 
   setStep = (step, trg) => {
-    // probably because i use triggerStepMouseHandler for two different events
-    // that step can be undefined
-    if (step === undefined) return;
-
     const steps = this.state.steps.slice();
     const stepTrg = trg === undefined ? !steps[step].trg : trg;
     steps[step].trg = stepTrg;
@@ -33,7 +29,42 @@ class AppStore extends Component {
     this.setState({ parameters });
   };
 
+  setGroup = (group_id) => {
+    const groups = this.state.groups.slice();
+    groups.map(group => {
+      group.active = (group_id === group.id) ? true : false
+      return group;
+    });
+    const group = group_id;
+    this.setState({ group, groups });
+  };
+
   state = {
+    group: 'smp',
+    groups: [
+      { id: 'smp', name: 'Sampler', active: true },
+      { id: 'flt', name: 'Biquad Filter' },
+      { id: 'sha', name: 'Wave Shaper' },
+      { id: 'rev', name: 'Reverb' },
+      { id: 'ech', name: 'Echo' },
+      { id: 'cmp', name: 'Dynamics Compressor' }
+    ],
+    // parameters: {
+    //   smp: [
+    //     { id: 'vel', name: 'Velocity', active: true },
+    //     { id: 'pit', name: 'Pitch' },
+    //     { id: 'sta', name: 'Sample Start' },
+    //     { id: 'end', name: 'Sample End' },
+    //   ],
+    //   flt: [
+    //     { id: 'act', name: 'Active', active: true },
+    //     { id: 'typ', name: 'Type' },
+    //     { id: 'frq', name: 'Frequency' },
+    //     { id: 'qua', name: 'Quality Factor' },
+    //     { id: 'det', name: 'Detune' },
+    //     { id: 'gai', name: 'Gain' }
+    //   ]
+    // },
     steps: [
       { num: 0, trg: false },
       { num: 1, trg: false },
@@ -73,6 +104,7 @@ class AppStore extends Component {
     tracks: [1],
     addTrack: this.addTrack,
     setStep: this.setStep,
+    setGroup: this.setGroup,
     setParameter: this.setParameter
   };
 

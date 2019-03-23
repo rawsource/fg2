@@ -11,7 +11,13 @@ class PatternEditor extends Component {
     return (
       <div className="PatternEditor">
       <div className="pattern-editor">
-      <ParameterGroups />
+      <AppContext.Consumer>
+        {state => (
+          <ParameterGroups
+            groups={state.groups}
+            setGroup={state.setGroup} />
+        )}
+      </AppContext.Consumer>
       <div className="sequencer">
         <TrackParameters />
         <AppContext.Consumer>
