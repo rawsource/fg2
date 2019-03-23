@@ -19,7 +19,13 @@ class PatternEditor extends Component {
         )}
       </AppContext.Consumer>
       <div className="sequencer">
-        <TrackParameters />
+        <AppContext.Consumer>
+          {state => (
+            <TrackParameters
+              parameters={state.parameters[state.group]}
+              setParameter={state.setParameter} />
+          )}
+        </AppContext.Consumer>
         <AppContext.Consumer>
           {state => (
             <ValueController

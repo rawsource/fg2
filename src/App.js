@@ -32,11 +32,21 @@ class AppStore extends Component {
   setGroup = (group_id) => {
     const groups = this.state.groups.slice();
     groups.map(group => {
-      group.active = (group_id === group.id) ? true : false
+      group.active = (group_id === group.id) ? true : false;
       return group;
     });
     const group = group_id;
     this.setState({ group, groups });
+  };
+
+  setParameter = (parameter_id) => {
+    const parameters = { ...this.state.parameters };
+    parameters[this.state.group].map(parameter => {
+      parameter.active = (parameter_id === parameter.id) ? true : false;
+      return parameter;
+    });
+    const parameter = parameter_id;
+    this.setState({ parameter, parameters });
   };
 
   state = {
@@ -49,6 +59,7 @@ class AppStore extends Component {
       { id: 'ech', name: 'Echo' },
       { id: 'cmp', name: 'Dynamics Compressor' }
     ],
+    parameter: 'vel',
     parameters: {
       smp: [
         { id: 'vel', name: 'Velocity', active: true },
@@ -105,7 +116,8 @@ class AppStore extends Component {
     addTrack: this.addTrack,
     setStep: this.setStep,
     setGroup: this.setGroup,
-    setValue: this.setValue
+    setValue: this.setValue,
+    setParameter: this.setParameter
   };
 
   render() {
