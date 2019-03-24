@@ -20,28 +20,83 @@ class AppStore extends Component {
   setValue = (step, val) => {
     const values = this.state.values.slice();
     values[step].val = val;
+    this.setSequencerData(step, val);
     this.setState({ values });
   };
 
-  setGroup = (group_id) => {
+  setGroup = (group) => {
     const groups = this.state.groups.slice();
-    groups.map(group => {
-      group.active = (group_id === group.id) ? true : false;
-      return group;
+    groups.map(x => {
+      x.active = x.id === group;
+      return x;
     });
-    const group = group_id;
     this.setState({ group, groups });
   };
 
-  setParameter = (parameter_id) => {
+  setParameter = (parameter) => {
     const parameters = { ...this.state.parameters };
-    parameters[this.state.group].map(parameter => {
-      parameter.active = (parameter_id === parameter.id) ? true : false;
-      return parameter;
+    parameters[this.state.group].map(x => {
+      x.active = x.id === parameter;
+      return x;
     });
-    const parameter = parameter_id;
-    this.setState({ parameter, parameters });
+    const values = this.getSequencerData(parameter);
+    this.setState({ parameter, parameters, values });
   };
+
+  getDefaultValues = (val) => {
+    return Array(64).fill(val)
+  }
+
+  setSequencerData = (step, value) => {
+    const track = this.state.track;
+    const pattern = this.state.pattern;
+    const parameter = this.state.parameter;
+    this.sequencerData
+      .tracks[track]
+      .patterns[pattern]
+      .val[parameter][step] = value
+  }
+
+  getSequencerData = (parameter) => {
+    const track = this.state.track;
+    const pattern = this.state.pattern;
+    const values = this.state.values.slice();
+    values.map((value, index) => {
+      value.val = this.sequencerData
+        .tracks[track]
+        .patterns[pattern]
+        .val[parameter][index]
+      return value;
+    });
+    return values;
+  }
+
+  patternDefaults = {
+    len: 16,
+    trg: this.getDefaultValues(false),
+    val: {
+      vel: this.getDefaultValues(100),
+      pit: this.getDefaultValues(50),
+      sta: this.getDefaultValues(0),
+      end: this.getDefaultValues(10),
+      act: this.getDefaultValues(0),
+      typ: this.getDefaultValues(0),
+      frq: this.getDefaultValues(0),
+      qua: this.getDefaultValues(0),
+      det: this.getDefaultValues(0),
+      gai: this.getDefaultValues(0)
+    }
+  }
+
+  sequencerData = {
+    tracks: [
+      {
+        patterns: [
+          JSON.parse(JSON.stringify(this.patternDefaults))
+        ]
+      }
+    ]
+  }
 
   state = {
     group: 'smp',
@@ -118,7 +173,8 @@ class AppStore extends Component {
       { num: 14, val: 100 },
       { num: 15, val: 100 },
     ],
-    track: 1,
+    pattern: 0,
+    track: 0,
     tracks: [1, 2, 3, 4, 5, 6, 7, 8],
     setStep: this.setStep,
     setGroup: this.setGroup,
