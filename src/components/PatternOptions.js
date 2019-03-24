@@ -1,8 +1,34 @@
 import React, { Component } from 'react';
 import './PatternOptions.css';
 
+const PatternItem = (props) => {
+  let className = 'item';
+  if (props.active) {
+    className = `${className} active`;
+  }
+  return (
+    <div
+      className={className}
+      onMouseDown={props.mouseDownHandler}
+      data-pattern={props.pattern}>
+    </div>
+  );
+};
+
 class PatternOptions extends Component {
+  patternMouseDownHandler = (event) => {
+    if (event.buttons !== 1) return;
+    this.props.setPattern(event.target.dataset.pattern);
+  }
+
   render() {
+    const patterns = this.props.patterns.map((pattern, index) =>
+      <PatternItem
+        key={index}
+        pattern={index}
+        active={index === this.props.pattern}
+        mouseDownHandler={this.patternMouseDownHandler} />
+    );
 
     return (
       <div className="PatternOptions">
@@ -13,14 +39,7 @@ class PatternOptions extends Component {
         </div>
         <div className="pattern-section">
           <div className="patterns">
-            <div className="item active"></div>
-            <div className="item"></div>
-            <div className="item"></div>
-            <div className="item"></div>
-            <div className="item"></div>
-            <div className="item"></div>
-            <div className="item"></div>
-            <div className="item"></div>
+            {patterns}
           </div>
           <div className="sub-title record">PATTERN</div>
           <div className="pages">

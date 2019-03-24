@@ -7,8 +7,16 @@ import PatternEditor from './components/PatternEditor'
 import AppContext from './AppContext'
 import './App.css';
 
+// TODO: init app with default selection of track, pattern, group and trigs and values
+
 
 class AppStore extends Component {
+  setPattern = (pattern) => {
+    pattern = Number.parseInt(pattern);
+    const values = this.getSequencerData(pattern, this.state.parameter);
+    this.setState({ pattern, values });
+  }
+
   setStep = (step, trg) => {
     const steps = [...this.state.steps];
     const stepTrg = trg === undefined ? !steps[step] : trg;
@@ -35,7 +43,7 @@ class AppStore extends Component {
       return x;
     });
     const parameter = this.getActiveParameter(group);
-    const values = this.getSequencerData(parameter);
+    const values = this.getSequencerData(this.state.pattern, parameter);
     this.setState({ group, groups, parameter, values });
   };
 
@@ -45,7 +53,7 @@ class AppStore extends Component {
       x.active = x.id === parameter;
       return x;
     });
-    const values = this.getSequencerData(parameter);
+    const values = this.getSequencerData(this.state.pattern, parameter);
     this.setState({ parameter, parameters, values });
   };
 
@@ -63,9 +71,8 @@ class AppStore extends Component {
       .val[parameter][step] = value
   }
 
-  getSequencerData = (parameter) => {
+  getSequencerData = (pattern, parameter) => {
     const track = this.state.track;
-    const pattern = this.state.pattern;
     return this.sequencerData
       .tracks[track]
       .patterns[pattern]
@@ -93,6 +100,13 @@ class AppStore extends Component {
     tracks: [
       {
         patterns: [
+          JSON.parse(JSON.stringify(this.patternDefaults)),
+          JSON.parse(JSON.stringify(this.patternDefaults)),
+          JSON.parse(JSON.stringify(this.patternDefaults)),
+          JSON.parse(JSON.stringify(this.patternDefaults)),
+          JSON.parse(JSON.stringify(this.patternDefaults)),
+          JSON.parse(JSON.stringify(this.patternDefaults)),
+          JSON.parse(JSON.stringify(this.patternDefaults)),
           JSON.parse(JSON.stringify(this.patternDefaults))
         ]
       }
@@ -141,11 +155,13 @@ class AppStore extends Component {
     steps: this.patternDefaults.trg.slice(0, 16),
     values: this.patternDefaults.val.vel.slice(0, 16),
     pattern: 0,
+    patterns: [1, 2, 3, 4, 5, 6, 7, 8],
     track: 0,
     tracks: [1, 2, 3, 4, 5, 6, 7, 8],
     setStep: this.setStep,
     setGroup: this.setGroup,
     setValue: this.setValue,
+    setPattern: this.setPattern,
     setParameter: this.setParameter
   };
 
@@ -170,7 +186,11 @@ class App extends Component {
             )}
           </AppContext.Consumer>
           <div className="track">
-            <PatternOptions />
+            <AppContext.Consumer>
+              {state => (
+                <PatternOptions pattern={state.pattern} patterns={state.patterns} setPattern={state.setPattern} />
+              )}
+            </AppContext.Consumer>
             <LevelMeter />
             <PatternEditor />
           </div>

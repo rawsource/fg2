@@ -2,11 +2,11 @@
     display: flex;
     margin-bottom: 10px;
 }
-.track-parameters .item:last-child,
-.track-parameters .item.last-visible-item {
+  .track-parameters .item:last-child,
+  .track-parameters .item.last-visible-item {
     margin-right: 0;
-}
-.track-parameters .item {
+  }
+  .track-parameters .item {
     flex-grow: 1;
     background: var(--item-inactive-color);
     color: var(--main-bg-color);
@@ -16,13 +16,13 @@
     font-size: 12px;
     text-transform: uppercase;
     flex-basis: 0;
-}
-.track-parameters .item.active {
+  }
+  .track-parameters .item.active {
     background: var(--item-active-color);
-}
-@supports (background: paint(slanted-bg)) {
+  }
+  @supports (background: paint(slanted-bg)) {
     .track-parameters .item.active {
-        --background-color: var(--item-active-color);
-        background: paint(slanted-bg);
+      --background-color: var(--item-active-color);
+      background: paint(slanted-bg);
     }
-}
+  }
