@@ -24,13 +24,19 @@ class AppStore extends Component {
     this.setState({ values });
   };
 
+  getActiveParameter = (group) => {
+    return this.state.parameters[group].find(x => x.active === true);
+  }
+
   setGroup = (group) => {
     const groups = this.state.groups.slice();
     groups.map(x => {
       x.active = x.id === group;
       return x;
     });
-    this.setState({ group, groups });
+    const parameter = this.getActiveParameter(group).id;
+    const values = this.getSequencerData(parameter);
+    this.setState({ group, groups, parameter, values });
   };
 
   setParameter = (parameter) => {
