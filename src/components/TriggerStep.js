@@ -4,7 +4,7 @@ import './TriggerStep.css';
 class TriggerStep extends Component {
   render() {
     let className = 'trigger';
-    if (this.props.step.trg) {
+    if (this.props.step) {
       className = `${className} active`;
     }
     return (
@@ -14,7 +14,7 @@ class TriggerStep extends Component {
         onMouseOver={this.props.mouseOverHandler}>
         <div
           className={className}
-          data-step={this.props.step.num}>
+          data-step={this.props.index}>
         </div>
       </div>
     );

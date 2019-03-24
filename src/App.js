@@ -11,8 +11,8 @@ import './App.css';
 class AppStore extends Component {
   setStep = (step, trg) => {
     const steps = [...this.state.steps];
-    const stepTrg = trg === undefined ? !steps[step].trg : trg;
-    steps[step].trg = stepTrg;
+    const stepTrg = trg === undefined ? !steps[step] : trg;
+    steps[step] = stepTrg;
     this.setState({ steps });
     return stepTrg;
   };
@@ -138,24 +138,7 @@ class AppStore extends Component {
         { id: 'rel', name: 'Release' }
       ]
     },
-    steps: [
-      { num: 0, trg: false },
-      { num: 1, trg: false },
-      { num: 2, trg: false },
-      { num: 3, trg: false },
-      { num: 4, trg: false },
-      { num: 5, trg: false },
-      { num: 6, trg: false },
-      { num: 7, trg: false },
-      { num: 8, trg: false },
-      { num: 9, trg: false },
-      { num: 10, trg: false },
-      { num: 11, trg: false },
-      { num: 12, trg: false },
-      { num: 13, trg: false },
-      { num: 14, trg: false },
-      { num: 15, trg: false }
-    ],
+    steps: this.patternDefaults.trg.slice(0, 16),
     values: this.patternDefaults.val.vel.slice(0, 16),
     pattern: 0,
     track: 0,

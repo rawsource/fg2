@@ -16,10 +16,11 @@ class TriggerController extends Component {
   }
 
   render() {
-    const triggerSteps = this.props.steps.map((step) =>
+    const triggerSteps = this.props.steps.map((step, index) =>
       <TriggerStep
-        key={step.num}
+        key={index}
         step={step}
+        index={index}
         mouseDownHandler={this.triggerStepMouseDownHandler}
         mouseOverHandler={this.triggerStepMouseOverHandler} />
     );
