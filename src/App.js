@@ -10,7 +10,7 @@ import './App.css';
 
 class AppStore extends Component {
   setStep = (step, trg) => {
-    const steps = this.state.steps.slice();
+    const steps = [...this.state.steps];
     const stepTrg = trg === undefined ? !steps[step].trg : trg;
     steps[step].trg = stepTrg;
     this.setState({ steps });
@@ -18,8 +18,8 @@ class AppStore extends Component {
   };
 
   setValue = (step, val) => {
-    const values = this.state.values.slice();
-    values[step].val = val;
+    const values = [...this.state.values];
+    values[step] = val;
     this.setSequencerData(step, val);
     this.setState({ values });
   };
@@ -29,7 +29,7 @@ class AppStore extends Component {
   }
 
   setGroup = (group) => {
-    const groups = this.state.groups.slice();
+    const groups = [...this.state.groups];
     groups.map(x => {
       x.active = x.id === group;
       return x;
@@ -66,15 +66,10 @@ class AppStore extends Component {
   getSequencerData = (parameter) => {
     const track = this.state.track;
     const pattern = this.state.pattern;
-    const values = this.state.values.slice();
-    values.map((value, index) => {
-      value.val = this.sequencerData
-        .tracks[track]
-        .patterns[pattern]
-        .val[parameter][index]
-      return value;
-    });
-    return values;
+    return this.sequencerData
+      .tracks[track]
+      .patterns[pattern]
+      .val[parameter].slice(0, 16)
   }
 
   patternDefaults = {
@@ -161,24 +156,7 @@ class AppStore extends Component {
       { num: 14, trg: false },
       { num: 15, trg: false }
     ],
-    values: [
-      { num: 0, val: 10 },
-      { num: 1, val: 50 },
-      { num: 2, val: 100 },
-      { num: 3, val: 100 },
-      { num: 4, val: 100 },
-      { num: 5, val: 100 },
-      { num: 6, val: 100 },
-      { num: 7, val: 100 },
-      { num: 8, val: 100 },
-      { num: 9, val: 100 },
-      { num: 10, val: 100 },
-      { num: 11, val: 100 },
-      { num: 12, val: 100 },
-      { num: 13, val: 100 },
-      { num: 14, val: 100 },
-      { num: 15, val: 100 },
-    ],
+    values: this.patternDefaults.val.vel.slice(0, 16),
     pattern: 0,
     track: 0,
     tracks: [1, 2, 3, 4, 5, 6, 7, 8],

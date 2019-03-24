@@ -40,10 +40,11 @@ class ValueController extends Component {
   }
 
   render() {
-    const valueSteps = this.props.values.map((step) =>
+    const valueSteps = this.props.values.map((val, index) =>
       <ValueStep
-        key={step.num}
-        step={step}
+        key={index}
+        val={val}
+        index={index}
         mouseDownHandler={this.mouseDownHandler}
         mouseMoveHandler={this.mouseMoveHandler}
         mouseOutHandler={this.mouseOutHandler}

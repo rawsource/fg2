@@ -9,7 +9,7 @@ class ValueStep extends Component {
 
   setAttributeStyleMap() {
     const sliderNode = this.sliderRef.current;
-    sliderNode.attributeStyleMap.set('--height', this.props.step.val);
+    sliderNode.attributeStyleMap.set('--height', this.props.val);
   }
 
   componentDidMount() {
@@ -31,9 +31,9 @@ class ValueStep extends Component {
           onMouseMove={this.props.mouseMoveHandler}
           onMouseOut={this.props.mouseOutHandler}
           onWheel={this.props.wheelHandler}
-          data-step={this.props.step.num}>
+          data-step={this.props.index}>
         </div>
-        <div className="digits">{this.props.step.val}</div>
+        <div className="digits">{this.props.val}</div>
       </div>
       </div>
     );
