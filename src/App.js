@@ -25,7 +25,7 @@ class AppStore extends Component {
   };
 
   getActiveParameter = (group) => {
-    return this.state.parameters[group].find(x => x.active === true);
+    return this.state.parameters[group].find(x => x.active === true).id;
   }
 
   setGroup = (group) => {
@@ -34,7 +34,7 @@ class AppStore extends Component {
       x.active = x.id === group;
       return x;
     });
-    const parameter = this.getActiveParameter(group).id;
+    const parameter = this.getActiveParameter(group);
     const values = this.getSequencerData(parameter);
     this.setState({ group, groups, parameter, values });
   };
