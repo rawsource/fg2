@@ -10,6 +10,9 @@ import './App.css'
 // TODO: init app with default selection of track, pattern, group and trigs and values
 
 class AppStore extends Component {
+  patternLength = 64
+  pageLength = 16
+
   setPattern = (pattern) => {
     pattern = Number.parseInt(pattern)
     const steps = this.getSequencerData(pattern, 'trg')
@@ -59,7 +62,7 @@ class AppStore extends Component {
   };
 
   getDefaultValues = (val) => {
-    return Array(64).fill(val)
+    return Array(this.patternLength).fill(val)
   }
 
   setSequencerData = (parameter, step, value) => {
@@ -74,11 +77,13 @@ class AppStore extends Component {
     const track = this.state.track
     return this.sequencerData
       .tracks[track]
-      .patterns[pattern][parameter].slice(0, 16)
+      .patterns[pattern][parameter].slice(0, this.pageLength)
   }
 
   patternDefaults = {
-    len: 16,
+    settings: {
+      len: this.pageLength
+    },
     trg: this.getDefaultValues(false),
     vel: this.getDefaultValues(100),
     pit: this.getDefaultValues(50),
@@ -148,12 +153,14 @@ class AppStore extends Component {
         { id: 'rel', name: 'Release' }
       ]
     },
-    steps: this.patternDefaults.trg.slice(0, 16),
-    values: this.patternDefaults.vel.slice(0, 16),
+    steps: this.patternDefaults.trg.slice(0, this.pageLength),
+    values: this.patternDefaults.vel.slice(0, this.pageLength),
     pattern: 0,
     patterns: [1, 2, 3, 4, 5, 6, 7, 8],
     track: 0,
     tracks: [1, 2, 3, 4, 5, 6, 7, 8],
+    page: 0,
+    pages: [1, 2, 3, 4],
     setStep: this.setStep,
     setGroup: this.setGroup,
     setValue: this.setValue,
