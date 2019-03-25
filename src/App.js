@@ -15,7 +15,7 @@ class AppStore extends Component {
 
   setPattern = (pattern) => {
     pattern = Number.parseInt(pattern)
-    const steps = this.getSequencerData(pattern, 'trg')
+    const steps = this.getSequencerData(pattern, 'smp_trg')
     const values = this.getSequencerData(pattern, this.state.parameter)
     this.setState({ pattern, values, steps })
   }
@@ -24,7 +24,7 @@ class AppStore extends Component {
     const steps = [...this.state.steps]
     const stepTrg = trg === undefined ? !steps[step] : trg
     steps[step] = stepTrg
-    this.setSequencerData('trg', step, stepTrg)
+    this.setSequencerData('smp_trg', step, stepTrg)
     this.setState({ steps })
     return stepTrg
   };
@@ -84,17 +84,27 @@ class AppStore extends Component {
     settings: {
       len: this.pageLength
     },
-    trg: this.getDefaultValues(false),
-    vel: this.getDefaultValues(100),
-    pit: this.getDefaultValues(50),
-    sta: this.getDefaultValues(0),
-    end: this.getDefaultValues(10),
-    act: this.getDefaultValues(0),
-    typ: this.getDefaultValues(0),
-    frq: this.getDefaultValues(0),
-    qua: this.getDefaultValues(0),
-    det: this.getDefaultValues(0),
-    gai: this.getDefaultValues(0)
+    smp_trg: this.getDefaultValues(false),
+    smp_vel: this.getDefaultValues(100),
+    smp_pit: this.getDefaultValues(50),
+    smp_sta: this.getDefaultValues(0),
+    smp_end: this.getDefaultValues(10),
+    flt_act: this.getDefaultValues(0),
+    flt_typ: this.getDefaultValues(0),
+    flt_frq: this.getDefaultValues(0),
+    flt_qua: this.getDefaultValues(0),
+    flt_det: this.getDefaultValues(0),
+    flt_gai: this.getDefaultValues(0),
+    sha_act: this.getDefaultValues(0),
+    sha_cur: this.getDefaultValues(0),
+    sha_ovs: this.getDefaultValues(0),
+    cmp_act: this.getDefaultValues(0),
+    cmp_trs: this.getDefaultValues(0),
+    cmp_kne: this.getDefaultValues(0),
+    cmp_rat: this.getDefaultValues(0),
+    cmp_red: this.getDefaultValues(0),
+    cmp_att: this.getDefaultValues(0),
+    cmp_rel: this.getDefaultValues(0)
   }
 
   sequencerData = {
@@ -122,39 +132,39 @@ class AppStore extends Component {
       { id: 'sha', name: 'Wave Shaper' },
       { id: 'cmp', name: 'Dynamics Compressor' }
     ],
-    parameter: 'vel',
+    parameter: 'smp_vel',
     parameters: {
       smp: [
-        { id: 'vel', name: 'Velocity', active: true },
-        { id: 'pit', name: 'Pitch' },
-        { id: 'sta', name: 'Sample Start' },
-        { id: 'end', name: 'Sample End' }
+        { id: 'smp_vel', name: 'Velocity', active: true },
+        { id: 'smp_pit', name: 'Pitch' },
+        { id: 'smp_sta', name: 'Sample Start' },
+        { id: 'smp_end', name: 'Sample End' }
       ],
       flt: [
-        { id: 'act', name: 'Active', active: true },
-        { id: 'typ', name: 'Type' },
-        { id: 'frq', name: 'Frequency' },
-        { id: 'qua', name: 'Quality Factor' },
-        { id: 'det', name: 'Detune' },
-        { id: 'gai', name: 'Gain' }
+        { id: 'flt_act', name: 'Active', active: true },
+        { id: 'flt_typ', name: 'Type' },
+        { id: 'flt_frq', name: 'Frequency' },
+        { id: 'flt_qua', name: 'Quality Factor' },
+        { id: 'flt_det', name: 'Detune' },
+        { id: 'flt_gai', name: 'Gain' }
       ],
       sha: [
-        { id: 'act', name: 'Active', active: true },
-        { id: 'cur', name: 'Curve' },
-        { id: 'ovs', name: 'Oversample' }
+        { id: 'sha_act', name: 'Active', active: true },
+        { id: 'sha_cur', name: 'Curve' },
+        { id: 'sha_ovs', name: 'Oversample' }
       ],
       cmp: [
-        { id: 'act', name: 'Active', active: true },
-        { id: 'trs', name: 'Treshold' },
-        { id: 'kne', name: 'Knee' },
-        { id: 'rat', name: 'Ratio' },
-        { id: 'red', name: 'Reduction' },
-        { id: 'att', name: 'Attack' },
-        { id: 'rel', name: 'Release' }
+        { id: 'cmp_act', name: 'Active', active: true },
+        { id: 'cmp_trs', name: 'Treshold' },
+        { id: 'cmp_kne', name: 'Knee' },
+        { id: 'cmp_rat', name: 'Ratio' },
+        { id: 'cmp_red', name: 'Reduction' },
+        { id: 'cmp_att', name: 'Attack' },
+        { id: 'cmp_rel', name: 'Release' }
       ]
     },
-    steps: this.patternDefaults.trg.slice(0, this.pageLength),
-    values: this.patternDefaults.vel.slice(0, this.pageLength),
+    steps: this.patternDefaults.smp_trg.slice(0, this.pageLength),
+    values: this.patternDefaults.smp_vel.slice(0, this.pageLength),
     pattern: 0,
     patterns: [1, 2, 3, 4, 5, 6, 7, 8],
     track: 0,
