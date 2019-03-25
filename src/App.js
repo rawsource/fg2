@@ -1,62 +1,61 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import TransportControls from './components/TransportControls'
 import TrackTabs from './components/TrackTabs'
 import PatternOptions from './components/PatternOptions'
 import LevelMeter from './components/LevelMeter'
 import PatternEditor from './components/PatternEditor'
 import AppContext from './AppContext'
-import './App.css';
+import './App.css'
 
 // TODO: init app with default selection of track, pattern, group and trigs and values
 
-
 class AppStore extends Component {
   setPattern = (pattern) => {
-    pattern = Number.parseInt(pattern);
-    const steps = this.getSequencerData(pattern, 'trg');
-    const values = this.getSequencerData(pattern, this.state.parameter);
-    this.setState({ pattern, values, steps });
+    pattern = Number.parseInt(pattern)
+    const steps = this.getSequencerData(pattern, 'trg')
+    const values = this.getSequencerData(pattern, this.state.parameter)
+    this.setState({ pattern, values, steps })
   }
 
   setStep = (step, trg) => {
-    const steps = [...this.state.steps];
-    const stepTrg = trg === undefined ? !steps[step] : trg;
-    steps[step] = stepTrg;
-    this.setSequencerData('trg', step, stepTrg);
-    this.setState({ steps });
-    return stepTrg;
+    const steps = [...this.state.steps]
+    const stepTrg = trg === undefined ? !steps[step] : trg
+    steps[step] = stepTrg
+    this.setSequencerData('trg', step, stepTrg)
+    this.setState({ steps })
+    return stepTrg
   };
 
   setValue = (step, val) => {
-    const values = [...this.state.values];
-    values[step] = val;
-    this.setSequencerData(this.state.parameter, step, val);
-    this.setState({ values });
+    const values = [...this.state.values]
+    values[step] = val
+    this.setSequencerData(this.state.parameter, step, val)
+    this.setState({ values })
   };
 
   getActiveParameter = (group) => {
-    return this.state.parameters[group].find(x => x.active === true).id;
+    return this.state.parameters[group].find(x => x.active === true).id
   }
 
   setGroup = (group) => {
-    const groups = [...this.state.groups];
+    const groups = [...this.state.groups]
     groups.map(x => {
-      x.active = x.id === group;
-      return x;
-    });
-    const parameter = this.getActiveParameter(group);
-    const values = this.getSequencerData(this.state.pattern, parameter);
-    this.setState({ group, groups, parameter, values });
+      x.active = x.id === group
+      return x
+    })
+    const parameter = this.getActiveParameter(group)
+    const values = this.getSequencerData(this.state.pattern, parameter)
+    this.setState({ group, groups, parameter, values })
   };
 
   setParameter = (parameter) => {
-    const parameters = { ...this.state.parameters };
+    const parameters = { ...this.state.parameters }
     parameters[this.state.group].map(x => {
-      x.active = x.id === parameter;
-      return x;
-    });
-    const values = this.getSequencerData(this.state.pattern, parameter);
-    this.setState({ parameter, parameters, values });
+      x.active = x.id === parameter
+      return x
+    })
+    const values = this.getSequencerData(this.state.pattern, parameter)
+    this.setState({ parameter, parameters, values })
   };
 
   getDefaultValues = (val) => {
@@ -64,15 +63,15 @@ class AppStore extends Component {
   }
 
   setSequencerData = (parameter, step, value) => {
-    const track = this.state.track;
-    const pattern = this.state.pattern;
+    const track = this.state.track
+    const pattern = this.state.pattern
     this.sequencerData
       .tracks[track]
       .patterns[pattern][parameter][step] = value
   }
 
   getSequencerData = (pattern, parameter) => {
-    const track = this.state.track;
+    const track = this.state.track
     return this.sequencerData
       .tracks[track]
       .patterns[pattern][parameter].slice(0, 16)
@@ -124,7 +123,7 @@ class AppStore extends Component {
         { id: 'vel', name: 'Velocity', active: true },
         { id: 'pit', name: 'Pitch' },
         { id: 'sta', name: 'Sample Start' },
-        { id: 'end', name: 'Sample End' },
+        { id: 'end', name: 'Sample End' }
       ],
       flt: [
         { id: 'act', name: 'Active', active: true },
@@ -162,17 +161,17 @@ class AppStore extends Component {
     setParameter: this.setParameter
   };
 
-  render() {
+  render () {
     return (
       <AppContext.Provider value={this.state}>
         {this.props.children}
       </AppContext.Provider>
-    );
+    )
   }
 }
 
 class App extends Component {
-  render() {
+  render () {
     return (
       <div className="App">
         <AppStore>
@@ -193,8 +192,8 @@ class App extends Component {
           </div>
         </AppStore>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
