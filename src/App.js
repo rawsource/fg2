@@ -13,14 +13,16 @@ import './App.css';
 class AppStore extends Component {
   setPattern = (pattern) => {
     pattern = Number.parseInt(pattern);
+    const steps = this.getSequencerData(pattern, 'trg');
     const values = this.getSequencerData(pattern, this.state.parameter);
-    this.setState({ pattern, values });
+    this.setState({ pattern, values, steps });
   }
 
   setStep = (step, trg) => {
     const steps = [...this.state.steps];
     const stepTrg = trg === undefined ? !steps[step] : trg;
     steps[step] = stepTrg;
+    this.setSequencerData('trg', step, stepTrg);
     this.setState({ steps });
     return stepTrg;
   };
@@ -28,7 +30,7 @@ class AppStore extends Component {
   setValue = (step, val) => {
     const values = [...this.state.values];
     values[step] = val;
-    this.setSequencerData(step, val);
+    this.setSequencerData(this.state.parameter, step, val);
     this.setState({ values });
   };
 
@@ -61,39 +63,34 @@ class AppStore extends Component {
     return Array(64).fill(val)
   }
 
-  setSequencerData = (step, value) => {
+  setSequencerData = (parameter, step, value) => {
     const track = this.state.track;
     const pattern = this.state.pattern;
-    const parameter = this.state.parameter;
     this.sequencerData
       .tracks[track]
-      .patterns[pattern]
-      .val[parameter][step] = value
+      .patterns[pattern][parameter][step] = value
   }
 
   getSequencerData = (pattern, parameter) => {
     const track = this.state.track;
     return this.sequencerData
       .tracks[track]
-      .patterns[pattern]
-      .val[parameter].slice(0, 16)
+      .patterns[pattern][parameter].slice(0, 16)
   }
 
   patternDefaults = {
     len: 16,
     trg: this.getDefaultValues(false),
-    val: {
-      vel: this.getDefaultValues(100),
-      pit: this.getDefaultValues(50),
-      sta: this.getDefaultValues(0),
-      end: this.getDefaultValues(10),
-      act: this.getDefaultValues(0),
-      typ: this.getDefaultValues(0),
-      frq: this.getDefaultValues(0),
-      qua: this.getDefaultValues(0),
-      det: this.getDefaultValues(0),
-      gai: this.getDefaultValues(0)
-    }
+    vel: this.getDefaultValues(100),
+    pit: this.getDefaultValues(50),
+    sta: this.getDefaultValues(0),
+    end: this.getDefaultValues(10),
+    act: this.getDefaultValues(0),
+    typ: this.getDefaultValues(0),
+    frq: this.getDefaultValues(0),
+    qua: this.getDefaultValues(0),
+    det: this.getDefaultValues(0),
+    gai: this.getDefaultValues(0)
   }
 
   sequencerData = {
@@ -153,7 +150,7 @@ class AppStore extends Component {
       ]
     },
     steps: this.patternDefaults.trg.slice(0, 16),
-    values: this.patternDefaults.val.vel.slice(0, 16),
+    values: this.patternDefaults.vel.slice(0, 16),
     pattern: 0,
     patterns: [1, 2, 3, 4, 5, 6, 7, 8],
     track: 0,
