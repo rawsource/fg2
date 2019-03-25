@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import './TransportControls.css';
+import React, { Component } from 'react'
+import './TransportControls.css'
 
 const TimeElement = React.memo((props) => {
   return (
@@ -11,11 +11,11 @@ const TimeElement = React.memo((props) => {
         3:1:4 <span>BARS</span>
       </div>
     </div>
-  );
-});
+  )
+})
 
 class TransportControls extends Component {
-  render() {
+  render () {
     return (
       <div className="TransportControls">
         <div className="left">
@@ -38,8 +38,8 @@ class TransportControls extends Component {
           <TimeElement />
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default TransportControls;
+export default TransportControls

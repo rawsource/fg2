@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import './TrackTabs.css';
+import React, { Component } from 'react'
+import './TrackTabs.css'
 
 class TrackTabs extends Component {
-  render() {
+  render () {
     const trackItems = this.props.tracks.map((track) =>
       <TrackItem
         key={track}
         value={track} />
-    );
+    )
     return (
       <div className="TrackTabs">
         {trackItems}
       </div>
-    );
+    )
   }
 }
 
@@ -24,6 +24,6 @@ const TrackItem = (props) => (
       <div className="button">S</div>
     </div>
   </div>
-);
+)
 
-export default TrackTabs;
+export default TrackTabs

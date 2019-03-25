@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import './TriggerStep.css';
+import React, { Component } from 'react'
+import './TriggerStep.css'
 
 class TriggerStep extends Component {
-  render() {
-    let className = 'trigger';
+  render () {
+    let className = 'trigger'
     if (this.props.step) {
-      className = `${className} active`;
+      className = `${className} active`
     }
     return (
       <div
@@ -17,8 +17,8 @@ class TriggerStep extends Component {
           data-step={this.props.index}>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default TriggerStep;
+export default TriggerStep

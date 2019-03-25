@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import TriggerStep from './TriggerStep'
-import './TriggerController.css';
+import './TriggerController.css'
 
 class TriggerController extends Component {
   initialTrg = false;
 
   triggerStepMouseDownHandler = (event) => {
-    if (event.buttons !== 1) return;
-    this.initialTrg = this.props.setStep(event.target.dataset.step, undefined);
+    if (event.buttons !== 1) return
+    this.initialTrg = this.props.setStep(event.target.dataset.step, undefined)
   }
 
   triggerStepMouseOverHandler = (event) => {
-    if (event.buttons !== 1) return;
-    this.props.setStep(event.target.dataset.step, this.initialTrg);
+    if (event.buttons !== 1) return
+    this.props.setStep(event.target.dataset.step, this.initialTrg)
   }
 
-  render() {
+  render () {
     const triggerSteps = this.props.steps.map((step, index) =>
       <TriggerStep
         key={index}
@@ -23,13 +23,13 @@ class TriggerController extends Component {
         index={index}
         mouseDownHandler={this.triggerStepMouseDownHandler}
         mouseOverHandler={this.triggerStepMouseOverHandler} />
-    );
+    )
     return (
       <div className="trigger-controller">
         {triggerSteps}
       </div>
-    );
+    )
   }
 }
 
-export default TriggerController;
+export default TriggerController

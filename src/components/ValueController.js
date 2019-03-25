@@ -1,45 +1,44 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import ValueStep from './ValueStep'
-import './ValueController.css';
+import './ValueController.css'
 
 class ValueController extends Component {
-
   minY = 0
   maxY = 127
 
   mouseDownHandler = (event) => {
-    if (event.buttons !== 1) return;
-    this.update(event.target.dataset.step, event.nativeEvent.offsetY);
+    if (event.buttons !== 1) return
+    this.update(event.target.dataset.step, event.nativeEvent.offsetY)
   }
 
   mouseMoveHandler = (event) => {
-    if (event.buttons !== 1) return;
-    this.update(event.target.dataset.step, event.nativeEvent.offsetY);
+    if (event.buttons !== 1) return
+    this.update(event.target.dataset.step, event.nativeEvent.offsetY)
   }
 
   mouseOutHandler = (event) => {
-    if (event.buttons !== 1) return;
+    if (event.buttons !== 1) return
     if (event.nativeEvent.offsetY > this.maxY) {
-      this.update(event.target.dataset.step, this.maxY);
+      this.update(event.target.dataset.step, this.maxY)
     }
     if (event.nativeEvent.offsetY < this.minY) {
-        this.update(event.target.dataset.step, this.minY);
+      this.update(event.target.dataset.step, this.minY)
     }
   }
 
   wheelHandler = (event) => {
-    const step = event.target.dataset.step;
-    const val = this.props.values[step].val;
-    const offset = (event.deltaY < 0) ? 1 : -1;
-    this.update(step, this.maxY - (val + offset));
+    const step = event.target.dataset.step
+    const val = this.props.values[step].val
+    const offset = (event.deltaY < 0) ? 1 : -1
+    this.update(step, this.maxY - (val + offset))
   }
 
   update (step, val) {
-    val = Math.min(Math.max(val, this.minY), this.maxY);
-    this.props.setValue(step, this.maxY - val);
+    val = Math.min(Math.max(val, this.minY), this.maxY)
+    this.props.setValue(step, this.maxY - val)
   }
 
-  render() {
+  render () {
     const valueSteps = this.props.values.map((val, index) =>
       <ValueStep
         key={index}
@@ -49,13 +48,13 @@ class ValueController extends Component {
         mouseMoveHandler={this.mouseMoveHandler}
         mouseOutHandler={this.mouseOutHandler}
         wheelHandler={this.wheelHandler} />
-    );
+    )
     return (
       <div className="value-controller">
         {valueSteps}
       </div>
-    );
+    )
   }
 }
 
-export default ValueController;
+export default ValueController

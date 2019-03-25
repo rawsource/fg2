@@ -1,65 +1,65 @@
-import React, { Component } from 'react';
-import './LevelMeter.css';
+import React, { Component } from 'react'
+import './LevelMeter.css'
 
 class LevelMeter extends Component {
-  render() {
+  render () {
     return (
       <div className="LevelMeter">
-      <div className="level-meter">
-        <div className="meter">
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
-          <div className="segment"></div>
+        <div className="level-meter">
+          <div className="meter">
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+            <div className="segment"></div>
+          </div>
         </div>
       </div>
-      </div>
-    );
+    )
   }
 }
 
-export default LevelMeter;
+export default LevelMeter
