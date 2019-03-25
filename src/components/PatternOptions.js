@@ -15,7 +15,39 @@ const PatternItem = (props) => {
   )
 }
 
+const SubOption = (props) => {
+  let className = 'option'
+  if (props.active) {
+    className = `${className} active`
+  }
+  return (
+    <div
+      className={className}
+      data-option={props.name}
+      onMouseDown={props.mouseDownHandler}>
+      {props.name}
+    </div>
+  )
+}
+
 class PatternOptions extends Component {
+  state = {
+    subOptions: [
+      { 'name': 'PATTERN', 'active': true },
+      { 'name': 'SAMPLE' }
+    ]
+  }
+
+  subOptionMouseDownHandler = (event) => {
+    if (event.buttons !== 1) return
+    const subOptions = [...this.state.subOptions]
+    subOptions.map(option => {
+      option.active = option.name === event.target.dataset.option
+      return option
+    })
+    this.setState({ subOptions })
+  }
+
   patternMouseDownHandler = (event) => {
     if (event.buttons !== 1) return
     this.props.setPattern(event.target.dataset.pattern)
@@ -30,12 +62,19 @@ class PatternOptions extends Component {
         mouseDownHandler={this.patternMouseDownHandler} />
     )
 
+    const subOptions = this.state.subOptions.map((option, index) =>
+      <SubOption
+        key={index}
+        name={option.name}
+        active={option.active}
+        mouseDownHandler={this.subOptionMouseDownHandler} />
+    )
+
     return (
       <div className="PatternOptions">
         <div className="pattern-options">
           <div className="options">
-            <div className="option option-pattern active">PATTERN</div>
-            <div className="option option-sample">SAMPLE</div>
+            {subOptions}
           </div>
           <div className="pattern-section">
             <div className="patterns">
