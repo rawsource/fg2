@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
-import './TrackTabs.css'
+import styles from './TrackTabs.module.css'
 
 class TrackTabs extends Component {
   render () {
@@ -11,7 +11,7 @@ class TrackTabs extends Component {
         active={index === this.props.track} />
     )
     return (
-      <div className="TrackTabs">
+      <div className={styles.TrackTabs}>
         {trackItems}
       </div>
     )
@@ -19,16 +19,20 @@ class TrackTabs extends Component {
 }
 
 const TrackItem = (props) => {
-  const className = classNames({
-    item: true,
-    active: props.active
+  const tabItemStyle = classNames({
+    [styles.tabItem]: true,
+    [styles.tabItemActive]: props.active
+  })
+  const tabItemBusButtonStyle = classNames({
+    [styles.tabItemBusButton]: true,
+    [styles.tabItemActiveBusButton]: props.active
   })
   return (
-    <div className={className}>
+    <div className={tabItemStyle}>
       <span>TRACK {props.value}</span>
-      <div className="bus">
-        <div className="button">M</div>
-        <div className="button">S</div>
+      <div className={styles.tabItemBus}>
+        <div className={tabItemBusButtonStyle}>M</div>
+        <div className={tabItemBusButtonStyle}>S</div>
       </div>
     </div>
   )
