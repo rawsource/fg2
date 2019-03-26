@@ -5,7 +5,7 @@ import PatternOptions from './components/PatternOptions'
 import LevelMeter from './components/LevelMeter'
 import PatternEditor from './components/PatternEditor'
 import AppContext from './AppContext'
-import AppStore from './AppStore'
+import AppState from './AppState'
 import styles from './App.module.css'
 
 // TODO: init app with default selection of track, pattern, group and trigs and values
@@ -14,13 +14,14 @@ class App extends Component {
   render () {
     return (
       <div className={styles.App}>
-        <AppStore>
+        <AppState>
           <TransportControls />
           <AppContext.Consumer>
             {state => (
               <TrackTabs
                 tracks={state.tracks}
-                track={state.track} />
+                track={state.track}
+                setTrack={state.setTrack} />
             )}
           </AppContext.Consumer>
           <div className={styles.track}>
@@ -35,7 +36,7 @@ class App extends Component {
             <LevelMeter />
             <PatternEditor />
           </div>
-        </AppStore>
+        </AppState>
       </div>
     )
   }

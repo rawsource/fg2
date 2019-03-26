@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import AppContext from './AppContext'
 
-class AppStore extends Component {
+class AppState extends Component {
     patternLength = 64
     pageLength = 16
 
+    setTrack = (track) => {
+      this.setState({ track })
+    }
+
     setPattern = (pattern) => {
-      pattern = Number.parseInt(pattern)
       const steps = this.getSequencerData(pattern, 'smp_trg')
       const values = this.getSequencerData(pattern, this.state.parameter)
       this.setState({ pattern, values, steps })
@@ -166,6 +169,7 @@ class AppStore extends Component {
       setStep: this.setStep,
       setGroup: this.setGroup,
       setValue: this.setValue,
+      setTrack: this.setTrack,
       setPattern: this.setPattern,
       setParameter: this.setParameter
     };
@@ -179,4 +183,4 @@ class AppStore extends Component {
     }
 }
 
-export default AppStore
+export default AppState

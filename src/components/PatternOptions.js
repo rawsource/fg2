@@ -51,7 +51,8 @@ class PatternOptions extends Component {
 
   patternMouseDownHandler = (event) => {
     if (event.buttons !== 1) return
-    this.props.setPattern(event.target.dataset.pattern)
+    const pattern = Number.parseInt(event.target.dataset.pattern)
+    this.props.setPattern(pattern)
   }
 
   render () {
