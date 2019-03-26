@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import TriggerStep from './TriggerStep'
-import './TriggerController.css'
+import styles from './TriggerController.module.css'
 
 class TriggerController extends Component {
   initialTrg = false;
@@ -25,7 +25,7 @@ class TriggerController extends Component {
         mouseOverHandler={this.triggerStepMouseOverHandler} />
     )
     return (
-      <div className="trigger-controller">
+      <div className={styles.TriggerController}>
         {triggerSteps}
       </div>
     )
