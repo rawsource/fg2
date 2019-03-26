@@ -7,20 +7,3 @@
   display: flex;
   position: relative;
 }
-
-.PatternOptions {
-  display: flex;
-  flex-grow: 1;
-  max-width: 25%;
-  min-width: 290px;
-}
-
-.LevelMeter {
-  display: flex;
-}
-
-.PatternEditor {
-  display: flex;
-  flex-grow: 1;
-  border-left: 2px solid var(--black-color);
-}

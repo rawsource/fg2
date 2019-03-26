@@ -1,3 +1,7 @@
+.LevelMeter {
+  display: flex;
+}
+
 .level-meter {
   display: flex;
   background: var(--main-bg-color);
