@@ -18,7 +18,9 @@ class App extends Component {
           <TransportControls />
           <AppContext.Consumer>
             {state => (
-              <TrackTabs tracks={state.tracks} />
+              <TrackTabs
+                tracks={state.tracks}
+                track={state.track} />
             )}
           </AppContext.Consumer>
           <div className={styles.track}>
