@@ -201,7 +201,10 @@ class App extends Component {
           <div className={styles.track}>
             <AppContext.Consumer>
               {state => (
-                <PatternOptions pattern={state.pattern} patterns={state.patterns} setPattern={state.setPattern} />
+                <PatternOptions
+                  pattern={state.pattern}
+                  patterns={state.patterns}
+                  setPattern={state.setPattern} />
               )}
             </AppContext.Consumer>
             <LevelMeter />
