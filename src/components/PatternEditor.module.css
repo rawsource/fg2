@@ -4,11 +4,6 @@
   border-left: 2px solid var(--black-color);
 }
 
-.pattern-editor {
-  display: flex;
-  flex-grow: 1;
-}
-
 .sequencer {
   flex-grow: 1;
   background: var(--main-bg-color);
@@ -16,16 +11,16 @@
   padding-left: 0;
 }
 
-.subdivisions {
+.subdivision {
   display: flex;
 }
-  .subdivisions .item {
+  .subdivisionItem {
     margin-top: 10px;
     margin-right: 10px;
     background: var(--item-inactive-color);
     padding: 2px;
     flex-grow: 1;
   }
-  .subdivisions .item:last-child {
-    margin-right: 0;
-  }
+    .subdivisionItem:last-child {
+      margin-right: 0;
+    }
