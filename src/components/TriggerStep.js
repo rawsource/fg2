@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
+import classNames from 'classnames'
 import './TriggerStep.css'
 
 class TriggerStep extends Component {
   render () {
-    let className = 'trigger'
-    if (this.props.step) {
-      className = `${className} active`
-    }
+    const className = classNames({
+      trigger: true,
+      active: this.props.step
+    })
     return (
       <div
         className="TriggerStep"

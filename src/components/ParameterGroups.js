@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
+import classNames from 'classnames'
 import './ParameterGroups.css'
 
 const Group = (props) => {
-  let className = 'item'
-  if (props.group.active) {
-    className = `${className} active`
-  }
+  const className = classNames({
+    item: true,
+    active: props.group.active
+  })
   return (
     <div
       className={className}

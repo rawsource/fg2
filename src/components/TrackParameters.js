@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
+import classNames from 'classnames'
 import './TrackParameters.css'
 
 const Parameter = (props) => {
-  let className = 'item'
-  if (props.parameter.active) {
-    className = `${className} active`
-  }
+  const className = classNames({
+    item: true,
+    active: props.parameter.active
+  })
   return (
     <div
       className={className}

@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
+import classNames from 'classnames'
 import './PatternOptions.css'
 
 const PatternItem = (props) => {
-  let className = 'item'
-  if (props.active) {
-    className = `${className} active`
-  }
+  const className = classNames({
+    item: true,
+    active: props.active
+  })
   return (
     <div
       className={className}
@@ -16,10 +17,10 @@ const PatternItem = (props) => {
 }
 
 const SubOption = (props) => {
-  let className = 'option'
-  if (props.active) {
-    className = `${className} active`
-  }
+  const className = classNames({
+    option: true,
+    active: props.active
+  })
   return (
     <div
       className={className}
