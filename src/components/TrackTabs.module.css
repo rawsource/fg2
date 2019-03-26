@@ -20,8 +20,8 @@
   .tabItem:last-child {
     border-right: none;
   }
+
 .tabItemActive {
-  z-index: 1;
   color: var(--button-fg-color);
   background: var(--active-tab-color);
   border-bottom: 2px solid var(--main-bg-color);
