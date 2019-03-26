@@ -6,13 +6,15 @@ class AppState extends Component {
     pageLength = 16
 
     setTrack = (track) => {
-      this.setState({ track })
+      const steps = this.getSequencerData(track, this.state.pattern, 'smp_trg')
+      const values = this.getSequencerData(track, this.state.pattern, this.state.parameter)
+      this.setState({ track, steps, values })
     }
 
     setPattern = (pattern) => {
-      const steps = this.getSequencerData(pattern, 'smp_trg')
-      const values = this.getSequencerData(pattern, this.state.parameter)
-      this.setState({ pattern, values, steps })
+      const steps = this.getSequencerData(this.state.track, pattern, 'smp_trg')
+      const values = this.getSequencerData(this.state.track, pattern, this.state.parameter)
+      this.setState({ pattern, steps, values })
     }
 
     setStep = (step, trg) => {
@@ -42,7 +44,7 @@ class AppState extends Component {
         return x
       })
       const parameter = this.getActiveParameter(group)
-      const values = this.getSequencerData(this.state.pattern, parameter)
+      const values = this.getSequencerData(this.state.track, this.state.pattern, parameter)
       this.setState({ group, groups, parameter, values })
     };
 
@@ -52,7 +54,7 @@ class AppState extends Component {
         x.active = x.id === parameter
         return x
       })
-      const values = this.getSequencerData(this.state.pattern, parameter)
+      const values = this.getSequencerData(this.state.track, this.state.pattern, parameter)
       this.setState({ parameter, parameters, values })
     };
 
@@ -68,8 +70,7 @@ class AppState extends Component {
         .patterns[pattern][parameter][step] = value
     }
 
-    getSequencerData = (pattern, parameter) => {
-      const track = this.state.track
+    getSequencerData = (track, pattern, parameter) => {
       return this.sequencerData
         .tracks[track]
         .patterns[pattern][parameter].slice(0, this.pageLength)
@@ -104,6 +105,18 @@ class AppState extends Component {
 
     sequencerData = {
       tracks: [
+        {
+          patterns: [
+            JSON.parse(JSON.stringify(this.patternDefaults)),
+            JSON.parse(JSON.stringify(this.patternDefaults)),
+            JSON.parse(JSON.stringify(this.patternDefaults)),
+            JSON.parse(JSON.stringify(this.patternDefaults)),
+            JSON.parse(JSON.stringify(this.patternDefaults)),
+            JSON.parse(JSON.stringify(this.patternDefaults)),
+            JSON.parse(JSON.stringify(this.patternDefaults)),
+            JSON.parse(JSON.stringify(this.patternDefaults))
+          ]
+        },
         {
           patterns: [
             JSON.parse(JSON.stringify(this.patternDefaults)),
