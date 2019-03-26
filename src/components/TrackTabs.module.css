@@ -47,6 +47,6 @@
     .tabItemBusButton:last-child {
       margin-right: 0;
     }
-    .tabItemActiveBusButton {
+    .tabItemActive .tabItemBusButton {
       background: #333;
     }

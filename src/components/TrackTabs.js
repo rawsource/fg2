@@ -23,16 +23,12 @@ const TrackItem = (props) => {
     [styles.tabItem]: true,
     [styles.tabItemActive]: props.active
   })
-  const tabItemBusButtonStyle = classNames({
-    [styles.tabItemBusButton]: true,
-    [styles.tabItemActiveBusButton]: props.active
-  })
   return (
     <div className={tabItemStyle}>
       <span>TRACK {props.value}</span>
       <div className={styles.tabItemBus}>
-        <div className={tabItemBusButtonStyle}>M</div>
-        <div className={tabItemBusButtonStyle}>S</div>
+        <div className={styles.tabItemBusButton}>M</div>
+        <div className={styles.tabItemBusButton}>S</div>
       </div>
     </div>
   )
