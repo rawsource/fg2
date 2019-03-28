@@ -8,6 +8,7 @@ import AppContext from './AppContext'
 import AppState from './AppState'
 import styles from './App.module.css'
 
+// TODO: active pattern / page should be set per track
 // TODO: init app with default selection of track, pattern, group and trigs and values
 
 class App extends Component {

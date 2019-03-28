@@ -4,6 +4,8 @@ import AppContext from './AppContext'
 class AppState extends Component {
     patternLength = 64
     pageLength = 16
+    numPatterns = 8
+    numTracks = 8
 
     setTrack = (track) => {
       const steps = this.getSequencerData(track, this.state.pattern, 'smp_trg')
@@ -104,32 +106,13 @@ class AppState extends Component {
     }
 
     sequencerData = {
-      tracks: [
-        {
-          patterns: [
-            JSON.parse(JSON.stringify(this.patternDefaults)),
-            JSON.parse(JSON.stringify(this.patternDefaults)),
-            JSON.parse(JSON.stringify(this.patternDefaults)),
-            JSON.parse(JSON.stringify(this.patternDefaults)),
-            JSON.parse(JSON.stringify(this.patternDefaults)),
-            JSON.parse(JSON.stringify(this.patternDefaults)),
-            JSON.parse(JSON.stringify(this.patternDefaults)),
-            JSON.parse(JSON.stringify(this.patternDefaults))
-          ]
-        },
-        {
-          patterns: [
-            JSON.parse(JSON.stringify(this.patternDefaults)),
-            JSON.parse(JSON.stringify(this.patternDefaults)),
-            JSON.parse(JSON.stringify(this.patternDefaults)),
-            JSON.parse(JSON.stringify(this.patternDefaults)),
-            JSON.parse(JSON.stringify(this.patternDefaults)),
-            JSON.parse(JSON.stringify(this.patternDefaults)),
-            JSON.parse(JSON.stringify(this.patternDefaults)),
-            JSON.parse(JSON.stringify(this.patternDefaults))
-          ]
+      tracks: Array(this.numTracks).fill(0).map(() => {
+        return {
+          patterns: Array(this.numPatterns).fill(0).map(() => {
+            return JSON.parse(JSON.stringify(this.patternDefaults))
+          })
         }
-      ]
+      })
     }
 
     state = {
