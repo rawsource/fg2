@@ -8,8 +8,8 @@ import AppContext from './AppContext'
 import AppState from './AppState'
 import styles from './App.module.css'
 
-// TODO: make pageLength configurable per pattern
-// TODO: active pattern / page should be set per track
+// TODO: make pageLength (num steps) configurable per pattern
+// TODO: active page should be set per track
 // TODO: init app with default selection of track, pattern, group and trigs and values
 
 class App extends Component {
@@ -30,7 +30,7 @@ class App extends Component {
             <AppContext.Consumer>
               {state => (
                 <PatternOptions
-                  pattern={state.pattern}
+                  pattern={state.tracks[state.track].pattern}
                   patterns={state.patterns}
                   setPattern={state.setPattern} />
               )}

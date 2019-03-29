@@ -9,15 +9,18 @@ class AppState extends Component {
   patternLength = this.numPages * this.pageLength
 
   setTrack = (track) => {
-    const steps = this.getSequencerData(track, this.state.pattern, 'smp_trg')
-    const values = this.getSequencerData(track, this.state.pattern, this.state.parameter)
+    const pattern = this.getActivePattern(track)
+    const steps = this.getSequencerData(track, pattern, 'smp_trg')
+    const values = this.getSequencerData(track, pattern, this.state.parameter)
     this.setState({ track, steps, values })
   }
 
   setPattern = (pattern) => {
+    const tracks = [...this.state.tracks]
+    tracks[this.state.track].pattern = pattern
     const steps = this.getSequencerData(this.state.track, pattern, 'smp_trg')
     const values = this.getSequencerData(this.state.track, pattern, this.state.parameter)
-    this.setState({ pattern, steps, values })
+    this.setState({ tracks, steps, values })
   }
 
   setStep = (step, trg) => {
@@ -36,6 +39,10 @@ class AppState extends Component {
     this.setState({ values })
   };
 
+  getActivePattern = (track) => {
+    return this.state.tracks[track].pattern
+  }
+
   getActiveParameter = (group) => {
     return this.state.parameters[group].find(x => x.active === true).id
   }
@@ -46,8 +53,9 @@ class AppState extends Component {
       x.active = x.id === group
       return x
     })
+    const pattern = this.getActivePattern(this.state.track)
     const parameter = this.getActiveParameter(group)
-    const values = this.getSequencerData(this.state.track, this.state.pattern, parameter)
+    const values = this.getSequencerData(this.state.track, pattern, parameter)
     this.setState({ group, groups, parameter, values })
   };
 
@@ -57,7 +65,8 @@ class AppState extends Component {
       x.active = x.id === parameter
       return x
     })
-    const values = this.getSequencerData(this.state.track, this.state.pattern, parameter)
+    const pattern = this.getActivePattern(this.state.track)
+    const values = this.getSequencerData(this.state.track, pattern, parameter)
     this.setState({ parameter, parameters, values })
   };
 
@@ -67,7 +76,7 @@ class AppState extends Component {
 
   setSequencerData = (parameter, step, value) => {
     const track = this.state.track
-    const pattern = this.state.pattern
+    const pattern = this.getActivePattern(track)
     this.sequencerData
       .tracks[track]
       .patterns[pattern][parameter][step] = value
@@ -157,10 +166,14 @@ class AppState extends Component {
     },
     steps: this.patternDefaults.smp_trg.slice(0, this.pageLength),
     values: this.patternDefaults.smp_vel.slice(0, this.pageLength),
-    pattern: 0,
     patterns: Array.from({ length: this.numPatterns }, (v, k) => k + 1),
     track: 0,
-    tracks: Array.from({ length: this.numTracks }, (v, k) => k + 1),
+    tracks: Array(this.numTracks).fill(0).map((value, index) => {
+      return {
+        id: index + 1,
+        pattern: 0
+      }
+    }),
     page: 0,
     pages: Array.from({ length: this.numPages }, (v, k) => k + 1),
     setStep: this.setStep,

@@ -12,8 +12,8 @@ class TrackTabs extends Component {
   render () {
     const trackItems = this.props.tracks.map((track, index) =>
       <TrackItem
-        key={track}
-        value={track}
+        key={track.id}
+        value={track.id}
         track={index}
         mouseDownHandler={this.trackItemMouseDownHandler}
         active={index === this.props.track} />
