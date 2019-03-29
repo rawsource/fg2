@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
-import './ParameterGroups.css'
+import styles from './ParameterGroups.module.css'
 
 const Group = (props) => {
-  const className = classNames({
-    item: true,
-    active: props.group.active
+  const groupItemStyle = classNames({
+    [styles.groupItem]: true,
+    [styles.active]: props.group.active
   })
   return (
     <div
-      className={className}
+      className={groupItemStyle}
       onMouseDown={props.mouseDownHandler}
       data-group={props.group.id}
       title={props.group.name}>
@@ -32,10 +32,8 @@ class ParameterGroups extends Component {
         mouseDownHandler={this.groupMouseDownHandler} />
     )
     return (
-      <div className="ParameterGroups">
-        <div className="parameter-groups">
-          {parameterGroups}
-        </div>
+      <div className={styles.ParameterGroups}>
+        {parameterGroups}
       </div>
     )
   }
