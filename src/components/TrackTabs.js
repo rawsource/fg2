@@ -27,19 +27,19 @@ class TrackTabs extends Component {
 }
 
 const TrackItem = (props) => {
-  const tabItemStyle = classNames({
-    [styles.tabItem]: true,
-    [styles.tabItemActive]: props.active
+  const className = classNames({
+    [styles.item]: true,
+    [styles.active]: props.active
   })
   return (
     <div
-      className={tabItemStyle}
+      className={className}
       data-track={props.track}
       onMouseDown={props.mouseDownHandler}>
       TRACK {props.value}
-      <div className={styles.tabItemBus}>
-        <div className={styles.tabItemBusButton}>M</div>
-        <div className={styles.tabItemBusButton}>S</div>
+      <div className={styles.bus}>
+        <div className={styles.button}>M</div>
+        <div className={styles.button}>S</div>
       </div>
     </div>
   )

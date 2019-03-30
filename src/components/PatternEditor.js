@@ -40,10 +40,10 @@ class PatternEditor extends Component {
             )}
           </AppContext.Consumer>
           <div className={styles.subdivision}>
-            <div className={styles.subdivisionItem}></div>
-            <div className={styles.subdivisionItem}></div>
-            <div className={styles.subdivisionItem}></div>
-            <div className={styles.subdivisionItem}></div>
+            <div className={styles.item}></div>
+            <div className={styles.item}></div>
+            <div className={styles.item}></div>
+            <div className={styles.item}></div>
           </div>
         </div>
       </div>

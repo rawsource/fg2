@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './ValueStep.css'
+import styles from './ValueStep.module.css'
 
 class ValueStep extends Component {
   constructor (props) {
@@ -22,10 +22,10 @@ class ValueStep extends Component {
 
   render () {
     return (
-      <div className="ValueStep">
+      <div className={styles.ValueStep}>
         <div>
           <div
-            className="slider"
+            className={styles.slider}
             ref={this.sliderRef}
             onMouseDown={this.props.mouseDownHandler}
             onMouseMove={this.props.mouseMoveHandler}
@@ -33,7 +33,7 @@ class ValueStep extends Component {
             onWheel={this.props.wheelHandler}
             data-step={this.props.index}>
           </div>
-          <div className="digits">{this.props.val}</div>
+          <div className={styles.digits}>{this.props.val}</div>
         </div>
       </div>
     )

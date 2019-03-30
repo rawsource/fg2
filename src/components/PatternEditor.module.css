@@ -14,13 +14,13 @@
 .subdivision {
   display: flex;
 }
-  .subdivisionItem {
+  .subdivision .item {
     margin-top: 10px;
     margin-right: 10px;
     background: var(--item-inactive-color);
     padding: 2px;
     flex-grow: 1;
   }
-    .subdivisionItem:last-child {
-      margin-right: 0;
-    }
+  .subdivision .item:last-child {
+    margin-right: 0;
+  }

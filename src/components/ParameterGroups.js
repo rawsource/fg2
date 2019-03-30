@@ -3,13 +3,13 @@ import classNames from 'classnames'
 import styles from './ParameterGroups.module.css'
 
 const Group = (props) => {
-  const groupItemStyle = classNames({
-    [styles.groupItem]: true,
+  const className = classNames({
+    [styles.item]: true,
     [styles.active]: props.group.active
   })
   return (
     <div
-      className={groupItemStyle}
+      className={className}
       onMouseDown={props.mouseDownHandler}
       data-group={props.group.id}
       title={props.group.name}>

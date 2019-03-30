@@ -3,7 +3,7 @@
   position: relative;
 }
 
-.tabItem {
+.TrackTabs .item {
   color: var(--item-inactive-color);
   align-items: center;
   display: flex;
@@ -17,36 +17,34 @@
   position: relative;
   white-space: nowrap;
 }
-  .tabItem:last-child {
+  .TrackTabs .item:last-child {
     border-right: none;
   }
-
-.tabItemActive {
-  color: var(--button-fg-color);
-  background: var(--active-tab-color);
-  border-bottom: 2px solid var(--main-bg-color);
-}
-
-.tabItemBus {
-  position: absolute;
-  display: flex;
-  right: 5px;
-  width: 60px;
-}
-  .tabItemBusButton {
-    flex-grow: 1;
-    flex-basis: 0;
-    margin-right: 5px;
-    padding: 5px;
-    background: #222;
-    color: white;
-    display: inline-block;
-    text-align: center;
-    border-radius: 3px;
+  .TrackTabs .item.active {
+    color: var(--button-fg-color);
+    background: var(--active-tab-color);
+    border-bottom: 2px solid var(--main-bg-color);
   }
-    .tabItemBusButton:last-child {
+    .TrackTabs .item .bus {
+      position: absolute;
+      display: flex;
+      right: 5px;
+      width: 60px;
+    }
+      .TrackTabs .item .bus .button {
+        flex-grow: 1;
+        flex-basis: 0;
+        margin-right: 5px;
+        padding: 5px;
+        background: #222;
+        color: white;
+        display: inline-block;
+        text-align: center;
+        border-radius: 3px;
+      }
+    .TrackTabs .item .bus .button:last-child {
       margin-right: 0;
     }
-    .tabItemActive .tabItemBusButton {
+    .TrackTabs .item.active .bus .button {
       background: #333;
     }
