@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ValueStep from './ValueStep'
-import './ValueController.css'
+import styles from './ValueController.module.css'
 
 class ValueController extends Component {
   minY = 0
@@ -50,7 +50,7 @@ class ValueController extends Component {
         wheelHandler={this.wheelHandler} />
     )
     return (
-      <div className="value-controller">
+      <div className={styles.ValueController}>
         {valueSteps}
       </div>
     )

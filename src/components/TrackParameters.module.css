@@ -1,12 +1,11 @@
-.track-parameters {
-    display: flex;
-    margin-bottom: 10px;
+.TrackParameters {
+  display: flex;
+  margin-bottom: 10px;
 }
-  .track-parameters .item:last-child,
-  .track-parameters .item.last-visible-item {
+  .TrackParameters .item:last-child {
     margin-right: 0;
   }
-  .track-parameters .item {
+  .TrackParameters .item {
     flex-grow: 1;
     background: var(--item-inactive-color);
     color: var(--main-bg-color);
@@ -17,11 +16,11 @@
     text-transform: uppercase;
     flex-basis: 0;
   }
-  .track-parameters .item.active {
+  .TrackParameters .item.active {
     background: var(--item-active-color);
   }
   @supports (background: paint(slanted-bg)) {
-    .track-parameters .item.active {
+    .TrackParameters .item.active {
       --background-color: var(--item-active-color);
       background: paint(slanted-bg);
     }

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
-import './TrackParameters.css'
+import styles from './TrackParameters.module.css'
 
 const Parameter = (props) => {
   const className = classNames({
-    item: true,
-    active: props.parameter.active
+    [styles.item]: true,
+    [styles.active]: props.parameter.active
   })
   return (
     <div
@@ -31,7 +31,7 @@ class TrackParameters extends Component {
         mouseDownHandler={this.parameterMouseDownHandler} />
     )
     return (
-      <div className="track-parameters">
+      <div className={styles.TrackParameters}>
         {trackParameters}
       </div>
     )
