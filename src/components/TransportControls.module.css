@@ -31,17 +31,19 @@
   .button:hover {
     background: var(--button-hover-bg-color);
   }
-  .button.btn-small {
-    padding: 0 5px;
-    margin-left: auto;
-    margin-right: 10px;
-    /* HACK */
-    position: relative;
-    top: -1px;
+
+.smallButton {
+  composes: button;
+  padding: 0 5px;
+  margin-left: auto;
+  margin-right: 10px;
+  /* HACK */
+  position: relative;
+  top: -1px;
+}
+  .smallButton svg {
+    height: 16px;
   }
-    .button.btn-small svg {
-      height: 16px;
-    }
 
 .left {
   display: flex;
