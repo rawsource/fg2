@@ -1,61 +1,59 @@
 import React, { Component } from 'react'
-import './LevelMeter.css'
+import styles from './LevelMeter.module.css'
 
 class LevelMeter extends Component {
   render () {
     return (
-      <div className="LevelMeter">
-        <div className="level-meter">
-          <div className="meter">
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-            <div className="segment"></div>
-          </div>
+      <div className={styles.LevelMeter}>
+        <div className={styles.meter}>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
+          <div className={styles.segment}></div>
         </div>
       </div>
     )
