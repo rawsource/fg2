@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styles from './TransportControls.module.css'
 
-const TimeElement = React.memo((props) => {
+const TimeElement = (props) => {
   return (
     <div className={styles.time}>
       <div className={styles.inner}>
@@ -12,7 +12,7 @@ const TimeElement = React.memo((props) => {
       </div>
     </div>
   )
-})
+}
 
 class TransportControls extends Component {
   render () {
