@@ -178,7 +178,9 @@ class AppState extends Component {
     tracks: Array(this.numTracks).fill(0).map((value, index) => {
       return {
         id: index + 1,
-        pattern: 0
+        pattern: 0,
+        mute: false,
+        solo: false
       }
     }),
     page: 0,
@@ -193,9 +195,15 @@ class AppState extends Component {
 
   componentDidMount () {
     this.audioContext = new AudioContext()
-    this.sequencer = new Sequencer(this.audioContext, this.sequencerData, this.setActiveStep)
-    this.audioContext.resume()
-    this.sequencer.start()
+
+    Sequencer.audioContext = this.audioContext
+    Sequencer.sequencerData = this.sequencerData
+    Sequencer.stepChangeCallback = this.setActiveStep
+
+    this.sequencer = new Sequencer()
+
+    // this.audioContext.resume()
+    // this.sequencer.start()
   }
 
   render () {

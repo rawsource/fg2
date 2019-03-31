@@ -1,13 +1,14 @@
-export default class Sequencer {
-  constructor (audioContext, sequencerData, stepChangeCallback) {
-    this.audioContext = audioContext
-    this.sequencerData = sequencerData
-    this.stepChangeCallback = stepChangeCallback
+class Sequencer {
+  static audioContext
+  static sequencerData
+  static stepChangeCallback
 
-    // ----- t i m i n g
-
+  constructor () {
     // beats per minute
     this.bpm = 120
+
+    // the number of steps in a pattern
+    this.steps = 16
 
     // a sixteenth note at the given bpm
     this.stepLength = this.bpm / 60 * (1 / 16)
@@ -24,20 +25,17 @@ export default class Sequencer {
     // the index of the current step
     this.step = 0
 
-    // the number of steps in a pattern
-    this.steps = 16
-
     // the id of the setInterval lookahead
     this.intervalId = null
   }
 
   scheduleSequence () {
     while (
-      this.nextStepTime < this.audioContext.currentTime + this.lookahead) {
-      this.stepChangeCallback(this.step)
+      this.nextStepTime < Sequencer.audioContext.currentTime + this.lookahead) {
+      Sequencer.stepChangeCallback(this.step)
 
       // schedule the next step
-      const trigger = this.sequencerData
+      const trigger = Sequencer.sequencerData
         .tracks[0]
         .patterns[0]
         .smp_trg[this.step]
@@ -51,7 +49,7 @@ export default class Sequencer {
   }
 
   start () {
-    this.nextStepTime = this.audioContext.currentTime
+    this.nextStepTime = Sequencer.audioContext.currentTime
     this.scheduleSequence()
     this.intervalId = setInterval(this.scheduleSequence.bind(this), this.intervalTime)
   }
@@ -64,3 +62,5 @@ export default class Sequencer {
     this.step = 0
   }
 }
+
+export default Sequencer
