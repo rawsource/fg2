@@ -35,6 +35,7 @@ class Sequencer {
       Sequencer.stepChangeCallback(this.step)
 
       // schedule the next step
+      // eslint-disable-next-line
       const trigger = Sequencer.sequencerData
         .tracks[0]
         .patterns[0]
