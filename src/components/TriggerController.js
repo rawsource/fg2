@@ -21,6 +21,7 @@ class TriggerController extends Component {
         key={index}
         step={step}
         index={index}
+        highlight={index === this.props.step}
         mouseDownHandler={this.triggerStepMouseDownHandler}
         mouseOverHandler={this.triggerStepMouseOverHandler} />
     )

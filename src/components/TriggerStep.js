@@ -6,7 +6,8 @@ class TriggerStep extends Component {
   render () {
     const className = classNames({
       [styles.trigger]: true,
-      [styles.active]: this.props.step
+      [styles.active]: this.props.step,
+      [styles.highlight]: this.props.highlight
     })
     return (
       <div

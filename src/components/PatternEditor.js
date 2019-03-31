@@ -35,6 +35,7 @@ class PatternEditor extends Component {
           <AppContext.Consumer>
             {state => (
               <TriggerController
+                step={state.step}
                 steps={state.steps}
                 setStep={state.setStep} />
             )}

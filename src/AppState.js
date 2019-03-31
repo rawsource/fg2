@@ -1,12 +1,18 @@
 import React, { Component } from 'react'
 import AppContext from './AppContext'
 
+import Sequencer from './lib/sequencer'
+
 class AppState extends Component {
   numTracks = 8
   numPatterns = 8
   numPages = 4
   pageLength = 16
   patternLength = this.numPages * this.pageLength
+
+  setActiveStep = (step) => {
+    this.setState({ step })
+  }
 
   setTrack = (track) => {
     const pattern = this.getActivePattern(track)
@@ -164,6 +170,7 @@ class AppState extends Component {
         { id: 'cmp_rel', name: 'Release' }
       ]
     },
+    step: 0,
     steps: this.patternDefaults.smp_trg.slice(0, this.pageLength),
     values: this.patternDefaults.smp_vel.slice(0, this.pageLength),
     patterns: Array.from({ length: this.numPatterns }, (v, k) => k + 1),
@@ -183,6 +190,13 @@ class AppState extends Component {
     setPattern: this.setPattern,
     setParameter: this.setParameter
   };
+
+  componentDidMount () {
+    this.audioContext = new AudioContext()
+    this.sequencer = new Sequencer(this.audioContext, this.sequencerData, this.setActiveStep)
+    this.audioContext.resume()
+    this.sequencer.start()
+  }
 
   render () {
     return (

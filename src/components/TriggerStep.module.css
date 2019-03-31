@@ -16,7 +16,8 @@
 .trigger.active {
   background-color: var(--item-active-color);
 }
-:host(.highlight) .trigger {
+
+.highlight {
   border-color: white;
   box-shadow: 0 5px white;
 }
